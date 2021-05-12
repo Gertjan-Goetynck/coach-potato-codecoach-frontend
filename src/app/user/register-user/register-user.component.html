@@ -1,0 +1,66 @@
+<h2>Register</h2>
+<form [formGroup]="registerUserForm" (ngSubmit)="onSubmit()">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="form-group">
+                <label for="firstName">First Name</label>
+                <input type="text" class="form-control" formControlName='firstName'[class]="{
+                    'is-invalid':registerUserForm.controls.firstName.errors && registerUserForm.controls.firstName.touched,
+                    'is-valid':!registerUserForm.controls.firstName.errors && registerUserForm.controls.firstName.touched
+                }">
+                <div class="invalid-feedback" *ngIf="registerUserForm.controls.firstName.errors">
+                    <span>First Name is required</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="form-group">
+                <label for="lastName">Last Name</label>
+                <input type="text" class="form-control" formControlName='lastName'[class]="{
+                    'is-invalid':registerUserForm.controls.lastName.errors && registerUserForm.controls.lastName.touched,
+                    'is-valid':!registerUserForm.controls.lastName.errors && registerUserForm.controls.lastName.touched
+                }">
+                <div class="invalid-feedback" *ngIf="registerUserForm.controls.lastName.errors">
+                    <span>Last Name is required</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="form-group col-md-12">
+            <label for="email">Email</label>
+                <input type="text" class="form-control" formControlName='email'[class]="{
+                    'is-invalid':registerUserForm.controls.email.errors && registerUserForm.controls.email.touched,
+                    'is-valid':!registerUserForm.controls.email.errors && registerUserForm.controls.email.touched
+                }">
+                <div class="invalid-feedback"><span>Email is required</span></div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="form-group col-md-12">
+            <label for="password">Password</label>
+            <div class="input-group">
+                <input type="password" class="form-control" formControlName='password'[class]="{
+                    'is-invalid':registerUserForm.controls.password.errors && registerUserForm.controls.password.touched,
+                    'is-valid':!registerUserForm.controls.password.errors && registerUserForm.controls.password.touched
+                }">
+                <div class="invalid-feedback"><span>Password is required</span></div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="form-group col-md-12">
+            <label for="password">Repeat Password</label>
+            <div class="input-group">
+                <input type="password" class="form-control" formControlName='repeatPassword'[class]="{
+                    'is-invalid':registerUserForm.controls.repeatPassword.errors && registerUserForm.controls.repeatPassword.touched,
+                    'is-valid':!registerUserForm.controls.repeatPassword.errors && registerUserForm.controls.repeatPassword.touched
+                }">
+                <div class="invalid-feedback"><span>Type your password again</span></div>
+            </div>
+        </div>
+    </div>
+    <button class="btn btn-primary float-right" type="submit" [disabled]="!registerUserForm.valid">Add User</button>
+</form>
