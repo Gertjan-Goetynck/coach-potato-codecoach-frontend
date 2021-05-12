@@ -1,0 +1,13 @@
+.footer-title {
+  padding-top: 1rem;
+  font-size: 2rem !important;
+}
+
+.nav-link::before {
+  content: "> ";
+}
+
+.nav-link:hover {
+  color: white !important;
+}
+

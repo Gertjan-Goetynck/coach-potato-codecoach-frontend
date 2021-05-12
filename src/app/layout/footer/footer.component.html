@@ -1,6 +1,35 @@
-<footer class="hugs-bottom colored-background footer bg-dark">
+<footer class="hugs-bottom colored-background footer bg-warning">
 
-  <p class="text-center text-light">&copy; {{year}} CodeCoach</p>
+
+  <div class="row">
+    <div class="col-4 offset-2 ">
+      <h4 class="display-4 footer-title">Code Coach</h4>
+      <p> Code Coach is an academic coaching programme between students in secondary schools, supervised
+        by the schools started by the Make-It-Happen Foundation.</p>
+    </div>
+
+    <div class="col-4 ">
+      <h4 class="display-4 footer-title">Navigation</h4>
+
+      <ul class="nav flex-column">
+        <li class="nav-item">
+          <a class="nav-link text-dark font-weight-bold" [routerLink]="['/']" >Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-dark font-weight-bold" [routerLink]="['/register']">Sign in/Register</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-dark font-weight-bold" [routerLink]="['/']">Contact</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-dark font-weight-bold" [routerLink]="['/']">About Us</a>
+        </li>
+      </ul>
+
+    </div>
+  </div>
+
+  <p class="text-center font-italic py-3">&copy; {{year}} Code Coach - proudly created by the Coach Potato Team</p>
 </footer>
 
 

@@ -1,0 +1,39 @@
+.title-color {
+  color: rgb(26, 128, 122);
+}
+
+#first {
+  background-image: url("src/assets/images/youcoach_background1.jpg");
+}
+
+#second {
+  background-image: url("src/assets/images/youcoach_background2.jpg");
+}
+
+#third {
+  background-image: url("src/assets/images/youcoach_background3.jpg");
+}
+
+.jumbo-image {
+  background-repeat: no-repeat; background-size: cover;
+}
+
+.jumbo-image-bottom{
+ background-position: bottom;
+}
+
+p {
+  line-height: 2rem;
+}
+
+.jumbotron-big {
+  min-height: 500px !important;
+}
+
+.btn:hover {
+  color: white !important;
+}
+
+.btn {
+ margin-bottom: 2rem;
+}
