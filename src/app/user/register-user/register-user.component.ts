@@ -11,14 +11,16 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class RegisterUserComponent implements OnInit {
   private _user: User;
-
+  private _formBackendErrors = {
+    email: ''
+  };
   constructor(private _formBuilder: FormBuilder, private _userService: UserService, private _router: Router) { }
 
-    private _registerUserForm = this._formBuilder.group({
-    firstName: ['',Validators.required],
-    lastName: ['',Validators.required],
-    email: ['',Validators.required],
-    password: ['',Validators.required],
+  private _registerUserForm = this._formBuilder.group({
+    firstName: ['', Validators.required],
+    lastName: ['', Validators.required],
+    email: ['', Validators.required],
+    password: ['', Validators.required],
     repeatPassword: ['', Validators.required]
   })
 
@@ -26,10 +28,14 @@ export class RegisterUserComponent implements OnInit {
   }
 
   onSubmit(): void {
-     this._userService.addUser(this._registerUserForm.value).subscribe(user => this._router.navigate([`/users/${user.id}`]));
+    this._userService.addUser(this._registerUserForm.value).subscribe(user => this._router.navigate([`/users/${user.id}`]), error => this._formBackendErrors.email = error.error.message);
   }
 
   get registerUserForm() {
     return this._registerUserForm;
+  }
+
+  get formBackendErrors() {
+    return this._formBackendErrors;
   }
 }
