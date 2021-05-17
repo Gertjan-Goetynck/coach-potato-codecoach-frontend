@@ -5,10 +5,10 @@
             <div class="form-group">
                 <label for="firstName">First Name</label>
                 <input type="text" class="form-control" formControlName='firstName' [class]="{
-                    'is-invalid':registerUserForm.controls.firstName.errors && registerUserForm.controls.firstName.touched,
-                    'is-valid':!registerUserForm.controls.firstName.errors && registerUserForm.controls.firstName.touched
+                    'is-invalid':registerUserForm.controls['firstName'].errors && registerUserForm.controls['firstName'].touched,
+                    'is-valid':!registerUserForm.controls['firstName'].errors && registerUserForm.controls['firstName'].touched
                 }">
-                <div class="invalid-feedback" *ngIf="registerUserForm.controls.firstName.errors">
+                <div class="invalid-feedback" *ngIf="registerUserForm.controls['firstName'].errors">
                     <span>First Name is required</span>
                 </div>
             </div>
@@ -19,10 +19,10 @@
             <div class="form-group">
                 <label for="lastName">Last Name</label>
                 <input type="text" class="form-control" formControlName='lastName' [class]="{
-                    'is-invalid':registerUserForm.controls.lastName.errors && registerUserForm.controls.lastName.touched,
-                    'is-valid':!registerUserForm.controls.lastName.errors && registerUserForm.controls.lastName.touched
-                }">
-                <div class="invalid-feedback" *ngIf="registerUserForm.controls.lastName.errors">
+                    'is-invalid':registerUserForm.controls['lastName'].errors && registerUserForm.controls['lastName'].touched,
+                    'is-valid':!registerUserForm.controls['lastName'].errors && registerUserForm.controls['lastName'].touched
+                    }">
+                <div class="invalid-feedback" *ngIf="registerUserForm.controls['lastName'].errors">
                     <span>Last Name is required</span>
                 </div>
             </div>
@@ -32,48 +32,59 @@
         <div class="form-group col-md-12">
             <label for="email">Email</label>
             <input type="text" class="form-control" formControlName='email' [class]="{
-                    'is-invalid':(registerUserForm.controls.email.errors && registerUserForm.controls.email.touched) || formBackendErrors.email,
-                    'is-valid':!registerUserForm.controls.email.errors && registerUserForm.controls.email.touched
+                    'is-invalid':(registerUserForm.controls['email'].errors && registerUserForm.controls['email'].touched) || formBackendErrors.email,
+                    'is-valid':!registerUserForm.controls['email'].errors && registerUserForm.controls['email'].touched
                 }">
-            <div class="invalid-feedback" *ngIf="!formBackendErrors.email"><span>Email is required</span></div>
-            <div class="invalid-feedback" *ngIf="formBackendErrors.email"><span>{{formBackendErrors.email}}</span></div>
+            <div class="invalid-feedback"
+                *ngIf="registerUserForm.controls['email'].errors && !formBackendErrors.email && registerUserForm.controls['email'].errors.required">
+                <span>Email is
+                    required</span></div>
+            <div class="invalid-feedback"
+                *ngIf="registerUserForm.controls['email'].errors && !formBackendErrors.email && registerUserForm.controls['email'].hasError('isValidEmail')">
+                <span>The email format is invalid</span>
+            </div>
+            <div class="invalid-feedback" *ngIf="registerUserForm.controls['email'].errors && formBackendErrors.email">
+                <span>{{formBackendErrors.email}}</span></div>
         </div>
     </div>
-    <!-- <div formGroupName="child">
-        <input type="text" name="id" formControlName="id">
-        <input type="text" name="name" formControlName="name">
-     </div> -->
     <div>
         <div class="row">
             <div class="form-group col-md-6">
                 <label for="password">Password</label>
                 <div class="input-group">
                     <input type="password" class="form-control" formControlName='password' [class]="{
-                        'is-invalid':registerUserForm.controls.password.errors && registerUserForm.controls.password.touched,
-                        'is-valid':!registerUserForm.controls.password.errors && registerUserForm.controls.password.touched
+                        'is-invalid':registerUserForm.controls['password'].errors && registerUserForm.controls['password'].touched,
+                        'is-valid':!registerUserForm.controls['password'].errors && registerUserForm.controls['password'].touched
                     }">
-                    <div class="invalid-feedback" *ngIf="registerUserForm.controls.password.errors.required">
+                    <div class="invalid-feedback"
+                        *ngIf="registerUserForm.controls['password'].errors && registerUserForm.controls['password'].errors.required">
                         <span>Password is required</span>
                     </div>
                     <div class="invalid-feedback"
-                        *ngIf="registerUserForm.controls.password.errors.hasNumber || registerUserForm.controls.password.errors.hasCapitalCase || registerUserForm.controls.password.errors.minLength">
+                        *ngIf="registerUserForm.controls['password'].errors && (registerUserForm.controls['password'].hasError('hasNumber') || registerUserForm.controls['password'].hasError('hasCapitalCase') || registerUserForm.controls['password'].hasError('minlength'))">
                         <span>The password must be at least 8 characters and include one number and one capital
-                            case</span>
+                            letter</span>
                     </div>
                 </div>
             </div>
             <div class="form-group col-md-6">
                 <label for="password">Repeat Password</label>
                 <div class="input-group">
-                    <input type="password" class="form-control" formControlName='repeatPassword' [class]="{
-                        'is-invalid':registerUserForm.controls.repeatPassword.errors && registerUserForm.controls.repeatPassword.touched,
-                        'is-valid':!registerUserForm.controls.repeatPassword.errors && registerUserForm.controls.repeatPassword.touched
-                    }">
-                    <div class="invalid-feedback"><span>Type your password again</span></div>
+                    <input type="password" class="form-control" formControlName='confirmPassword' [class]="{
+                            'is-invalid':registerUserForm.controls['confirmPassword'].errors && registerUserForm.controls['confirmPassword'].touched,
+                            'is-valid':!registerUserForm.controls['confirmPassword'].errors && registerUserForm.controls['confirmPassword'].touched
+                        }">
+                    <div class="invalid-feedback"
+                        *ngIf="registerUserForm.controls['confirmPassword'].errors && registerUserForm.controls['confirmPassword'].hasError('required')">
+                        <span>Type your password again</span>
+                    </div>
+                    <div class="invalid-feedback"
+                        *ngIf="registerUserForm.controls['confirmPassword'].hasError('NoPassswordMatch')">
+                        <span>The passwords do not match</span>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-
     <button class="btn btn-primary float-right" type="submit" [disabled]="!registerUserForm.valid">Add User</button>
 </form>

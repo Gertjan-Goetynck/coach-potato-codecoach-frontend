@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { patternValidator } from 'src/app/forms-validators/pattern-validator';
+import { stringMatchValidator } from 'src/app/forms-validators/string-match-validator';
 import { User } from 'src/app/modules/user';
 import { UserService } from 'src/app/services/user.service';
 
@@ -20,25 +21,32 @@ export class RegisterUserComponent implements OnInit {
   private _registerUserForm = this._formBuilder.group({
     firstName: ['', Validators.required],
     lastName: ['', Validators.required],
-    email: ['', Validators.required],
-    // passwordMatch: this._formBuilder.group({
+    email: ['', [
+      Validators.required,
+      patternValidator(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/, { isValidEmail: true })
+    ]],
     password: ['',
-      [Validators.required,
-      Validators.minLength(8),
-      patternValidator(/\d/, { hasNumber: true }),
-      patternValidator(/[A-Z]/, { hasCapitalCase: true })]
+      Validators.compose([
+        Validators.required,
+        Validators.minLength(8),
+        patternValidator(/\d/, { hasNumber: true }),
+        patternValidator(/[A-Z]/, { hasCapitalCase: true })
+      ])
     ],
-    repeatPassword: ['', Validators.required]
-    // })
+    confirmPassword: ['', Validators.compose([Validators.required])]
 
-  })
+  },
+    {
+      validator: stringMatchValidator
+    }
+  )
 
   ngOnInit(): void {
   }
 
   onSubmit(): void {
     console.log(this._registerUserForm);
-    //this._userService.addUser(this._registerUserForm.value).subscribe(user => this._router.navigate([`/users/${user.id}`]), error => this._formBackendErrors.email = error.error.message);
+    this._userService.addUser(this._registerUserForm.value).subscribe(user => this._router.navigate([`/users/${user.id}`]), error => this._formBackendErrors.email = error.error.message);
   }
 
   get registerUserForm() {
