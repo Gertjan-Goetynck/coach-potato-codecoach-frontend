@@ -5,12 +5,14 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UserMenuComponent } from './user-menu/user-menu.component';
 import { RegisterUserComponent } from './register-user/register-user.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
+import { LoginFormComponent } from './login-form/login-form.component';
 
 @NgModule({
   declarations: [
     RegisterUserComponent,
     UserProfileComponent,
-    UserMenuComponent
+    UserMenuComponent,
+    LoginFormComponent
   ],
   imports: [
     CommonModule,
