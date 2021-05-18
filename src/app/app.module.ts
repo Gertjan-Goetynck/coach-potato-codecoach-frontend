@@ -5,15 +5,14 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import {LayoutModule} from "./layout/layout.module";
+import { LayoutModule } from "./layout/layout.module";
 import { RegisterUserComponent } from './user/register-user/register-user.component';
 import { HomePageComponent } from './home-page/home-page.component';
+import { UserModule } from './user/user.module';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    RegisterUserComponent,
-    HomePageComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,
@@ -21,7 +20,8 @@ import { HomePageComponent } from './home-page/home-page.component';
     LayoutModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    UserModule
   ],
   providers: [],
   bootstrap: [AppComponent]

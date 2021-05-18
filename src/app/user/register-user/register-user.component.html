@@ -29,6 +29,14 @@
         </div>
     </div>
     <div class="row">
+        <div class="col-md-12">
+            <div class="form-group">
+                <label for="lastName">Profile image link (optional)</label>
+                <input type="text" class="form-control" formControlName='pictureUrl'>
+            </div>
+        </div>
+    </div>
+    <div class="row">
         <div class="form-group col-md-12">
             <label for="email">Email</label>
             <input type="text" class="form-control" formControlName='email' [class]="{
@@ -38,13 +46,15 @@
             <div class="invalid-feedback"
                 *ngIf="registerUserForm.controls['email'].errors && !formBackendErrors.email && registerUserForm.controls['email'].errors.required">
                 <span>Email is
-                    required</span></div>
+                    required</span>
+            </div>
             <div class="invalid-feedback"
                 *ngIf="registerUserForm.controls['email'].errors && !formBackendErrors.email && registerUserForm.controls['email'].hasError('isValidEmail')">
                 <span>The email format is invalid</span>
             </div>
             <div class="invalid-feedback" *ngIf="registerUserForm.controls['email'].errors && formBackendErrors.email">
-                <span>{{formBackendErrors.email}}</span></div>
+                <span>{{formBackendErrors.email}}</span>
+            </div>
         </div>
     </div>
     <div>

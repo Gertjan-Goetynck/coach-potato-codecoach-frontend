@@ -11,14 +11,18 @@ export class UserService {
   private _userUrl: string;
 
 
-  constructor(private _http : HttpClient) {
+  constructor(private _http: HttpClient) {
     this._userUrl = `${environment.backendUrl}/users`;
   }
 
 
-  addUser(user: User) : Observable<User> {
-    return this._http.post<User>(this._userUrl,user);
-}
+  addUser(user: User): Observable<User> {
+    return this._http.post<User>(this._userUrl, user);
+  }
+
+  getUserById(id: string): Observable<User> {
+    return this._http.get<User>(`${this._userUrl}/${id}`);
+  }
 
 
 
