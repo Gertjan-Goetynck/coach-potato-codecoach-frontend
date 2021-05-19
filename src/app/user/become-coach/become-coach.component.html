@@ -1,0 +1,37 @@
+<div class="row" *ngIf="user">
+  <div class="col-md-3">
+    <app-user-menu [userId]="user.id"></app-user-menu>
+  </div>
+  <div class="col-md-9">
+    <div class="card">
+      <div class="card-body">
+        <h4 class="card-title">Apply to become a coach</h4>
+        <hr/>
+        <div class="row">
+          <div class="col-2">
+            <img src="assets/images/under_construction.png"
+                 alt="under construction image" class="img-fluid"/>
+          </div>
+          <div class="col-10">
+            <p>This part of the application is currently still under
+              construction. In order to become a coach please send an email to
+              your administrator with the following information:
+            </p>
+            <p>Your full name</p>
+            <p> Your motivation to become a coach</p>
+            <p> The list of topics (topic + grade) on which you would like to
+              coach</p>
+            <button type="button" (click)="becomeCoach()"
+                    class="btn btn-warning float-right">Become
+              a coach <i
+              class="fas fa-chevron-right"></i>
+            </button>
+            <ngb-alert #selfClosingAlert *ngIf="successMessage" type="success" (closed)="successMessage = ''">{{ successMessage }}
+            </ngb-alert>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

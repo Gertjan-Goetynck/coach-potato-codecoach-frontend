@@ -6,19 +6,23 @@ import { UserMenuComponent } from './user-menu/user-menu.component';
 import { RegisterUserComponent } from './register-user/register-user.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { LoginFormComponent } from './login-form/login-form.component';
+import { BecomeCoachComponent } from './become-coach/become-coach.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
     RegisterUserComponent,
     UserProfileComponent,
     UserMenuComponent,
-    LoginFormComponent
+    LoginFormComponent,
+    BecomeCoachComponent
   ],
   imports: [
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
-    RouterModule
+    RouterModule,
+    NgbModule
   ]
 })
 export class UserModule { }
