@@ -25,7 +25,6 @@ export class RegisterUserComponent implements OnInit {
       Validators.required,
       patternValidator(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/, { isValidEmail: true })
     ]],
-    pictureUrl: '',
     password: ['',
       Validators.compose([
         Validators.required,
@@ -34,7 +33,8 @@ export class RegisterUserComponent implements OnInit {
         patternValidator(/[A-Z]/, { hasCapitalCase: true })
       ])
     ],
-    confirmPassword: ['', Validators.compose([Validators.required])]
+    confirmPassword: ['', Validators.compose([Validators.required])],
+    pictureUrl: ''
 
   },
     {
