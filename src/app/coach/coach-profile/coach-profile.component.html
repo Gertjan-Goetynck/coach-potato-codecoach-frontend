@@ -1,0 +1,66 @@
+<div class="row" *ngIf="coach">
+    <div class="col-md-3">
+        
+    </div>
+    <div class="col-md-9">
+        
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Profile Information</h4>
+                        <hr />
+                        <div class="row">
+                            <div class="col-2">
+                                <img src="{{coach.pictureUrl}}" onerror="this.src='assets/images/avatar.png'"
+                                    alt="User Profile Image" class="img-fluid rounded-circle" />
+                            </div>
+                            <div class="col-10">
+                                <div class="row">
+                                    <div class="col-6 font-weight-bold">First Name</div>
+                                    <div class="col-6">{{coach.firstname}}</div>
+                                </div>
+                                <hr />
+                                <div class="row">
+                                    <div class="col-6  font-weight-bold">Last Name</div>
+                                    <div class="col-6">{{coach.lastname}}</div>
+                                </div>
+                                <hr />
+                                <div class="row">
+                                    <div class="col-6  font-weight-bold">Email</div>
+                                    <div class="col-6">{{coach.email}}</div>
+                                </div>
+                                <hr />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr />
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Coach Information</h4>
+                        <hr />
+                        <div class="row">
+                            <div class="col-10">
+                                <div class="row">
+                                    <div class="col-6 font-weight-bold">Introduction</div>
+                                    <div class="col-6">{{coach.introduction}}</div>
+                                </div>
+                                <hr />
+                                <div class="row">
+                                    <div class="col-6  font-weight-bold">Availability</div>
+                                    <div class="col-6">{{coach.availability}}</div>
+                                </div>
+                                <hr />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
