@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { User } from 'src/app/modules/user';
+import { User } from 'src/app/models/user';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
@@ -19,13 +19,13 @@ export class CoachProfileComponent implements OnInit {
 
 
 
-  private getCoach(): void{
-      this._userService.getUserById(this._route.snapshot.params.id).subscribe(coach => this._coach = coach);
-    }
-    
+  private getCoach(): void {
+    this._userService.getUserById(this._route.snapshot.params.id).subscribe(coach => this._coach = coach);
+  }
+
   get coach() {
     return this._coach;
   }
-  }
+}
 
 

@@ -3,7 +3,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { patternValidator } from 'src/app/forms-validators/pattern-validator';
 import { stringMatchValidator } from 'src/app/forms-validators/string-match-validator';
-import { User } from 'src/app/modules/user';
+import { User } from 'src/app/models/user';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
