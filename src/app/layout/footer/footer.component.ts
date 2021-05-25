@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from 'src/app/auth/auth.service';
+import { Coach } from 'src/app/models/coach';
 
 @Component({
   selector: 'app-footer',
@@ -8,8 +10,9 @@ import { Component, OnInit } from '@angular/core';
 export class FooterComponent implements OnInit {
 
   private _year: number;
+  // private _isCoach : boolean;
 
-  constructor() {
+  constructor(private _authService: AuthService) {
     this._year = new Date().getFullYear();
   }
 
@@ -19,4 +22,8 @@ export class FooterComponent implements OnInit {
   get year(): number {
     return this._year;
   }
+
+  // isCoach() : boolean {
+  //   return this._authService.isCoach();
+  // }
 }

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from 'src/app/auth/auth.service';
 
 @Component({
   selector: 'app-layout',
@@ -7,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LayoutComponent implements OnInit {
 
-  constructor() { }
+  constructor(private _authService: AuthService) { }
 
   ngOnInit(): void {
   }
@@ -15,5 +16,9 @@ export class LayoutComponent implements OnInit {
   handleLoggedInEvent(event) {
     console.log("Event triggered");
   }
+
+  isCoach() : boolean {
+    return this._authService.isCoach();
+}
 
 }

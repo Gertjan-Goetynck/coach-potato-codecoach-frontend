@@ -1,4 +1,5 @@
-<footer class="hugs-bottom colored-background footer bg-warning">
+<footer class="hugs-bottom colored-background footer bg-warning"
+ >
 
 
   <div class="row mx-0">
@@ -13,17 +14,17 @@
 
       <ul class="nav flex-column">
         <li class="nav-item">
-          <a class="nav-link text-dark font-weight-bold" [routerLink]="['/']">Home</a>
+          <a class="nav-link font-weight-bold" [routerLink]="['/']">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-dark font-weight-bold" [routerLink]="['/register']">Sign in/Register</a>
+          <a class="nav-link font-weight-bold" [routerLink]="['/register']">Register</a>
         </li>
-        <li class="nav-item">
+        <!-- <li class="nav-item">
           <a class="nav-link text-dark font-weight-bold" [routerLink]="['/']">Contact</a>
         </li>
         <li class="nav-item">
           <a class="nav-link text-dark font-weight-bold" [routerLink]="['/']">About Us</a>
-        </li>
+        </li> -->
       </ul>
 
     </div>
@@ -31,3 +32,6 @@
 
   <p class="text-center font-italic my-0 py-2">&copy; {{year}} Code Coach - proudly created by the Coach Potato Team</p>
 </footer>
+
+
+ <!-- [class]="{'bg-dark': isCoach(), 'text-white': isCoach()}" -->
