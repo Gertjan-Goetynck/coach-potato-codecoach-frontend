@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { AuthService } from 'src/app/auth/auth.service';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
@@ -10,14 +11,17 @@ import { UserService } from 'src/app/services/user.service';
 export class UserProfileComponent implements OnInit {
 
   private _user;
+  private _isAuthenticated : boolean;
 
   constructor(
     private _userService: UserService,
-    private _route: ActivatedRoute
+    private _route: ActivatedRoute,
+    private _authService: AuthService
   ) { }
 
   ngOnInit(): void {
     this.getUser();
+    this._isAuthenticated = this._authService.isAuthenticated();
   }
 
   private getUser(): void {
@@ -28,4 +32,7 @@ export class UserProfileComponent implements OnInit {
     return this._user;
   }
 
+  get isAuthenticated() {
+    return this._isAuthenticated;
+  }
 }

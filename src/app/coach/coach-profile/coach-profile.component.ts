@@ -17,8 +17,6 @@ export class CoachProfileComponent implements OnInit {
     this.getCoach();
   }
 
-
-
   private getCoach(): void {
     this._userService.getUserById(this._route.snapshot.params.id).subscribe(coach => this._coach = coach);
   }

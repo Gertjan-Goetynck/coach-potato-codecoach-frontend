@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {FormBuilder, Validators} from "@angular/forms";
 import {UserService} from "../../services/user.service";
 import {Router} from "@angular/router";
+import { cpuUsage } from 'process';
 
 @Component({
   selector: 'app-login-form',
@@ -25,7 +26,12 @@ private _loginUserForm = this._formBuilder.group({
 
   onSubmit(): void {
     console.log(this._loginUserForm);
-    this._userService.loginUser(this._loginUserForm.value).subscribe(user => this._router.navigate([`/users/${user.id}`]), error => console.log(error.error.message));
+    this._userService.loginUser(this._loginUserForm.value).subscribe(user => {
+      
+     localStorage.setItem('userId',user.id);
+     localStorage.setItem('userRoles', JSON.stringify(user.roles));
+     this._router.navigate([`/users/${user.id}`]), error => console.log(error.error.message)});
+    
   }
   //TODO Handle wrong login details for frontend (email/password)
 

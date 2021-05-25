@@ -10,7 +10,12 @@
     <ul class="navbar-nav">
       <li class="nav-item mr-1"> <a class="nav-link" routerLink="" role="button">Home</a> </li>
       <li class="nav-item mr-1"> <a class="nav-link" routerLink="/register" role="button">Register</a> </li>
-      <li class="nav-item mr-1"> <a class="nav-link bg-warning text-dark" routerLink="/login" role="button">Sign In <i class="fas fa-sign-in-alt"></i>
+      <li class="nav-item mr-1"> <a class="nav-link bg-warning text-dark" routerLink="/login" role="button" *ngIf="!isLoggedIn">Sign In <i class="fas fa-sign-in-alt"></i>
+        
+      </a> </li>
+
+      <li class="nav-item mr-1"> <a class="nav-link bg-info" (click)="signOut()" role="button" *ngIf="isLoggedIn">Sign Out <i class="fas fa-sign-out-alt"></i>
+        
       </a> </li>
     </ul>
   </div>

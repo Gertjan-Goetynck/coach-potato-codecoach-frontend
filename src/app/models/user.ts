@@ -1,4 +1,5 @@
 import { Coach } from "./coach";
+import { Role } from "./role";
 
 export interface User {
     id: string,
@@ -6,6 +7,7 @@ export interface User {
     lastName: string,
     email: string,
     password: string,
+    roles: Role[],
     profilePicture: string,
     coachProfile: Coach
 }
