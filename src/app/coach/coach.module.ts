@@ -3,12 +3,14 @@ import { CommonModule } from '@angular/common';
 import { CoachProfileComponent } from './coach-profile/coach-profile.component';
 import { RouterModule } from '@angular/router';
 import { CoachRoutingModule } from './coach-routing.module';
+import { CoachMenuComponent } from './coach-menu/coach-menu.component';
 
 
 
 @NgModule({
   declarations: [
-    CoachProfileComponent
+    CoachProfileComponent,
+    CoachMenuComponent
   ],
   imports: [
     CommonModule,
