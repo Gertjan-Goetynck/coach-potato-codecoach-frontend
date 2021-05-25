@@ -16,6 +16,8 @@ export class HeaderComponent implements OnInit {
     this._isLoggedIn = this._authService.isAuthenticated();
   }
 
+  //TODO: Switch sign in button to sign out when signed in
+
   get isLoggedIn() {
     return this._isLoggedIn;
   }
