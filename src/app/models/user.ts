@@ -8,6 +8,6 @@ export interface User {
     email: string,
     password: string,
     roles: Role[],
-    profilePicture: string,
+    pictureUrl: string,
     coachProfile: Coach
 }

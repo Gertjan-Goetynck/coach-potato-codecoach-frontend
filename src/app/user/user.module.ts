@@ -9,6 +9,7 @@ import { LoginFormComponent } from './login-form/login-form.component';
 import { BecomeCoachComponent } from './become-coach/become-coach.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { UserRoutingModule } from './user-routing.module';
+import { UserMainNavComponent } from './user-main-nav/user-main-nav.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { UserRoutingModule } from './user-routing.module';
     UserProfileComponent,
     UserMenuComponent,
     LoginFormComponent,
-    BecomeCoachComponent
+    BecomeCoachComponent,
+    UserMainNavComponent
   ],
   imports: [
     CommonModule,
