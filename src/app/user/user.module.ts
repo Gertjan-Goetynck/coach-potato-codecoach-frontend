@@ -8,6 +8,7 @@ import { UserProfileComponent } from './user-profile/user-profile.component';
 import { LoginFormComponent } from './login-form/login-form.component';
 import { BecomeCoachComponent } from './become-coach/become-coach.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { UserRoutingModule } from './user-routing.module';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     FormsModule,
     ReactiveFormsModule,
     RouterModule,
+    UserRoutingModule,
     NgbModule
   ]
 })
