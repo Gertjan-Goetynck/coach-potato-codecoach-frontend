@@ -5,6 +5,7 @@ import { RouterModule } from '@angular/router';
 import { CoachRoutingModule } from './coach-routing.module';
 import { CoachMenuComponent } from './coach-menu/coach-menu.component';
 import { CoachMainNavComponent } from './coach-main-nav/coach-main-nav.component';
+import { CoachListComponent } from './coach-list/coach-list.component';
 
 
 
@@ -12,7 +13,8 @@ import { CoachMainNavComponent } from './coach-main-nav/coach-main-nav.component
   declarations: [
     CoachProfileComponent,
     CoachMenuComponent,
-    CoachMainNavComponent
+    CoachMainNavComponent,
+    CoachListComponent
   ],
   imports: [
     CommonModule,
