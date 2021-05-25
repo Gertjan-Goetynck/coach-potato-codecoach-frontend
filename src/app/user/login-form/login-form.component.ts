@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import {FormBuilder, Validators} from "@angular/forms";
-import {UserService} from "../../services/user.service";
-import {Router} from "@angular/router";
-import { cpuUsage } from 'process';
+import { FormBuilder, Validators } from "@angular/forms";
+import { UserService } from "../../services/user.service";
+import { Router } from "@angular/router";
+import { patternValidator } from 'src/app/forms-validators/pattern-validator';
+import { Output, EventEmitter } from '@angular/core';
+
 
 @Component({
   selector: 'app-login-form',
@@ -11,15 +13,16 @@ import { cpuUsage } from 'process';
 })
 export class LoginFormComponent implements OnInit {
 
+
   private _loginErrors: string;
 
   constructor(private _formBuilder: FormBuilder, private _userService: UserService, private _router: Router) {
 
   }
-private _loginUserForm = this._formBuilder.group({
-  email:['', Validators.required],
-  password: ['', Validators.required]
-})
+  private _loginUserForm = this._formBuilder.group({
+    email: ['', [Validators.required, patternValidator(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/, { isValidEmail: true })]],
+    password: ['', Validators.required]
+  })
 
   ngOnInit(): void {
   }
@@ -27,13 +30,17 @@ private _loginUserForm = this._formBuilder.group({
   onSubmit(): void {
     console.log(this._loginUserForm);
     this._userService.loginUser(this._loginUserForm.value).subscribe(user => {
-      
-     localStorage.setItem('userId',user.id);
-     localStorage.setItem('userRoles', JSON.stringify(user.roles));
-     this._router.navigate([`/users/${user.id}`]), error => console.log(error.error.message)});
-    
+
+      localStorage.setItem('userId', user.id);
+      localStorage.setItem('userRoles', JSON.stringify(user.roles));
+      this._router.navigate([`/users/${user.id}`]);
+    }, error => this._loginErrors = error.error.message);
+
   }
-  //TODO Handle wrong login details for frontend (email/password)
+
+  get loginErrors() {
+    return this._loginErrors;
+  }
 
   get loginUserForm() {
     return this._loginUserForm;

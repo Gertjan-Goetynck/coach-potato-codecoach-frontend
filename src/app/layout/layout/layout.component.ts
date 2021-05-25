@@ -12,4 +12,8 @@ export class LayoutComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  handleLoggedInEvent(event) {
+    console.log("Event triggered");
+  }
+
 }
