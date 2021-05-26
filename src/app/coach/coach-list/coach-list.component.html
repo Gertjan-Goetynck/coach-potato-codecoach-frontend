@@ -1,13 +1,15 @@
-<div class="container-fluid" >
+<div class="container-fluid">
 
-  <div class="row ">
+  <div class="row d-flex">
 
-    <div class="col-md-2 mr-1 mt-2 "  *ngFor="let coach of coaches">
-      <div class="card" style="height: 20rem;">
+    <div class="col-md-2 mr-1 mt-2" *ngFor="let coach of coaches">
+      <div class="card" style="height: 25rem">
         <img [src]="coach.pictureUrl" onerror="this.src='assets/images/avatar.png'" class="card-img-top img-fluid "
-             alt="Coach Profile Image" style="height: 8rem;">
-        <div class="card-body " >
+             alt="Coach Profile Image" style="height: 8rem">
+        <div class="card-body">
           <h5 class="card-title">{{coach.firstName}} {{coach.lastName}}</h5>
+          <p class=""
+              *ngFor="let coachTopic of coach.coachProfile.coachTopics">{{coachTopic.topic.topic}}</p>
           <a href="#" class="btn btn-primary">See Profile <i class="fas fa-chevron-right"></i></a>
         </div>
 
