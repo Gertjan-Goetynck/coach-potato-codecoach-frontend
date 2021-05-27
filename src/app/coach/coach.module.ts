@@ -8,6 +8,8 @@ import { CoachMainNavComponent } from './coach-main-nav/coach-main-nav.component
 import { CoachListComponent } from './coach-list/coach-list.component';
 import { UserMenuComponent } from '../user/user-menu/user-menu.component';
 import { UserModule } from '../user/user.module';
+import { CoachDetailComponent } from './coach-detail/coach-detail.component';
+import { CoachDetailViewComponent } from './coach-detail-view/coach-detail-view.component';
 
 
 
@@ -16,7 +18,9 @@ import { UserModule } from '../user/user.module';
     CoachProfileComponent,
     CoachMenuComponent,
     CoachMainNavComponent,
-    CoachListComponent
+    CoachListComponent,
+    CoachDetailComponent,
+    CoachDetailViewComponent
   ],
   imports: [
     CommonModule,
