@@ -1,4 +1,4 @@
-<app-coach-main-nav [userId]="coach.id"></app-coach-main-nav>
+<app-coach-main-nav *ngIf="coach" [userId]="coach.id"></app-coach-main-nav>
 
 
 <div class="row" *ngIf="coach">
