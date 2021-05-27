@@ -6,6 +6,8 @@ import { CoachRoutingModule } from './coach-routing.module';
 import { CoachMenuComponent } from './coach-menu/coach-menu.component';
 import { CoachMainNavComponent } from './coach-main-nav/coach-main-nav.component';
 import { CoachListComponent } from './coach-list/coach-list.component';
+import { UserMenuComponent } from '../user/user-menu/user-menu.component';
+import { UserModule } from '../user/user.module';
 
 
 
@@ -19,7 +21,8 @@ import { CoachListComponent } from './coach-list/coach-list.component';
   imports: [
     CommonModule,
     RouterModule,
-    CoachRoutingModule
+    CoachRoutingModule,
+    UserModule
   ]
 })
 export class CoachModule { }
