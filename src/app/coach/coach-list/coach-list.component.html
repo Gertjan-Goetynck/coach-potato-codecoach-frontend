@@ -10,8 +10,9 @@
           alt="Coach Profile Image">
         <div class="card-body d-flex flex-column">
           <h5 class="card-title">{{coach.firstName}} {{coach.lastName}}</h5>
-          <p class="" *ngFor="let coachTopic of coach.coachProfile.coachTopics">{{coachTopic.topic.topic}}</p>
-          <a href="#" class="btn btn-warning btn-outline  mt-auto">See Profile <i class="fas fa-chevron-right"></i></a>
+          <p *ngFor="let coachTopic of coach.coachProfile.coachTopics">{{coachTopic.topic.topic}}</p>
+          <a routerLink="/coaches/{{coach.id}}/details" class="btn btn-warning btn-outline  mt-auto">See Profile <i
+              class="fas fa-chevron-right"></i></a>
         </div>
 
       </div>

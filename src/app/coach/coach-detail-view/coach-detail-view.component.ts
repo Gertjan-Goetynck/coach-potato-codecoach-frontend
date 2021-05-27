@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { User } from 'src/app/models/user';
 import { CoachService } from 'src/app/services/coach.service';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-coach-detail-view',
@@ -12,10 +13,9 @@ export class CoachDetailViewComponent implements OnInit {
 
   private _coach: User;
 
-  constructor(private _coachService: CoachService, private _route: ActivatedRoute) { }
+  constructor(private _userService: UserService, private _route: ActivatedRoute) { }
 
   ngOnInit(): void {
-    console.log(this._route.snapshot.params.id);
     this.getCoach();
   }
 
@@ -23,13 +23,7 @@ export class CoachDetailViewComponent implements OnInit {
     return this._coach;
   }
 
-  getCoach() {
-
-    this._coachService.getCoachById(this._route.snapshot.params.id).subscribe(coach => {
-      console.log("test");
-      console.log(coach);
-      this._coach = coach;
-
-    });
+  private getCoach(): void {
+    this._userService.getUserById(this._route.snapshot.params.id).subscribe(coach => this._coach = coach);
   }
 }

@@ -20,6 +20,8 @@ export class CoachService {
   }
 
   getCoachById(coachId: string): Observable<User> {
+    console.log("test");
     return this._http.get<User>(`${this._coachUrl}/${coachId}`);
   }
+
 }
