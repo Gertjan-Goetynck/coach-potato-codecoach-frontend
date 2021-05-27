@@ -11,7 +11,6 @@ export class AuthService {
 
   isCoach(): boolean {
     const roles: Role[] = JSON.parse(localStorage.getItem("userRoles"));
-    console.log(roles);
     if (roles && roles.some(role => role.roleType === "Coach")) {
       return true;
     }
@@ -20,7 +19,6 @@ export class AuthService {
 
   isAuthenticated(): boolean {
     const roles: Role[] = JSON.parse(localStorage.getItem("userRoles"));
-    console.log(roles);
     if (roles != null && roles.length > 0) {
       return true;
     }
