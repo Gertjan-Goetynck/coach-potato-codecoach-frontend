@@ -1,6 +1,6 @@
-import {Component, OnInit} from '@angular/core';
-import {UserService} from "../../services/user.service";
-import {ActivatedRoute} from "@angular/router";
+import { Component, OnInit } from '@angular/core';
+import { UserService } from "../../services/user.service";
+import { ActivatedRoute } from "@angular/router";
 
 @Component({
   selector: 'app-become-coach',
@@ -39,11 +39,14 @@ export class BecomeCoachComponent implements OnInit {
   }
 
   becomeCoach() {
-    this._userService.becomeCoach(this._user.id).subscribe(user => this._successMessage = "You are a coach now!",
+    this._userService.becomeCoach(this._user.id).subscribe(user => {
+      this._user = user;
+      this._successMessage = "You are a coach now!"
+    },
       error => this._successMessage = error.error.message);
   }
 
-//TODO add changing button color for left menu become a coach
+  //TODO add changing button color for left menu become a coach
 
 
 }

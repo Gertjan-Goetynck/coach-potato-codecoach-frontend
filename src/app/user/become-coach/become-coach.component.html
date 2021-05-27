@@ -1,3 +1,5 @@
+<app-user-main-nav *ngIf="user" [userId]="user.id"></app-user-main-nav>
+
 <div class="row" *ngIf="user">
   <div class="col-md-3">
     <app-user-menu [userId]="user.id"></app-user-menu>
@@ -6,11 +8,10 @@
     <div class="card">
       <div class="card-body">
         <h4 class="card-title">Apply to become a coach</h4>
-        <hr/>
+        <hr />
         <div class="row">
           <div class="col-2">
-            <img src="assets/images/under_construction.png"
-                 alt="under construction image" class="img-fluid"/>
+            <img src="assets/images/under_construction.png" alt="under construction image" class="img-fluid" />
           </div>
           <div class="col-10">
             <p>This part of the application is currently still under
@@ -21,12 +22,11 @@
             <p> Your motivation to become a coach</p>
             <p> The list of topics (topic + grade) on which you would like to
               coach</p>
-            <button type="button" (click)="becomeCoach()"
-                    class="btn btn-warning float-right">Become
-              a coach <i
-              class="fas fa-chevron-right"></i>
+            <button type="button" (click)="becomeCoach()" class="btn btn-warning float-right">Become
+              a coach <i class="fas fa-chevron-right"></i>
             </button>
-            <ngb-alert #selfClosingAlert *ngIf="successMessage" type="success" (closed)="successMessage = ''">{{ successMessage }}
+            <ngb-alert #selfClosingAlert *ngIf="successMessage" type="success" (closed)="successMessage = ''">{{
+              successMessage }}
             </ngb-alert>
 
           </div>

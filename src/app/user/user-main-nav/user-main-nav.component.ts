@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { AuthService } from 'src/app/auth/auth.service';
 
 @Component({
   selector: 'app-user-main-nav',
@@ -7,9 +8,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserMainNavComponent implements OnInit {
 
-  constructor() { }
+  private _userId: string;
+
+  constructor(private _authService: AuthService) { }
 
   ngOnInit(): void {
+  }
+
+  get userId(): string {
+    return this._userId;
+  }
+
+  @Input() set userId(userId: string) {
+    this._userId = userId;
+  }
+
+  isCoach() {
+    return this._authService.isCoach();
   }
 
 }
