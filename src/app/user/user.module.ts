@@ -27,6 +27,9 @@ import { UserMainNavComponent } from './user-main-nav/user-main-nav.component';
     RouterModule,
     UserRoutingModule,
     NgbModule
+  ],
+  exports: [
+    UserMainNavComponent
   ]
 })
 export class UserModule { }

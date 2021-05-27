@@ -1,4 +1,4 @@
-<app-coach-main-nav [userId]="coach.id"></app-coach-main-nav>
+<app-coach-main-nav *ngIf="coach" [userId]="coach.id"></app-coach-main-nav>
 
 
 <div class="row" *ngIf="coach">
@@ -8,7 +8,8 @@
     </app-coach-menu>
   </div>
   <div class="col-md-9">
-
+    <app-coach-detail [coach]="coach"></app-coach-detail>
+    <!-- 
     <div class="row">
       <div class="col-md-12">
         <div class="card">
@@ -77,14 +78,20 @@
               <div class="card-body">
                 <h4 class="card-title">Coach Topics</h4>
                 <hr />
-
+                <div class="row" *ngIf="coach.coachProfile.coachTopics.length === 0">
+                  <div class="col-12">
+                    <div class="row">
+                      <div class="col-12">The coach has not provided any topics.</div>
+                    </div>
+                    <hr />
+                  </div>
+                </div>
                 <div class="row" *ngFor="let topic of coach.coachProfile.coachTopics">
                   <div class="col-12">
                     <div class="row">
                       <div class="col-6 font-weight-bold">{{topic.topic.topic}}</div>
                       <div class="col-6"></div>
                     </div>
-
                     <hr />
                   </div>
                 </div>
@@ -95,5 +102,5 @@
       </div>
 
 
-    </div>
+    </div> -->
   </div>

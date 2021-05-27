@@ -24,4 +24,11 @@ export class AuthService {
     }
     return false;
   }
+
+  getCurrentUserId(): string {
+    if(this.isAuthenticated) {
+      return localStorage.getItem("userId");
+    }
+      return null;
+  }
 }

@@ -1,9 +1,9 @@
-import {Injectable} from '@angular/core';
-import {HttpClient} from "@angular/common/http";
-import {environment} from "../../environments/environment";
-import {Observable} from "rxjs/internal/Observable";
-import {Coach} from "../models/coach";
-import {User} from "../models/user";
+import { Injectable } from '@angular/core';
+import { HttpClient } from "@angular/common/http";
+import { environment } from "../../environments/environment";
+import { Observable } from "rxjs/internal/Observable";
+import { Coach } from "../models/coach";
+import { User } from "../models/user";
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +15,11 @@ export class CoachService {
     this._coachUrl = `${environment.backendUrl}/coaches`;
   }
 
-  getCoaches(): Observable<User[]>{
+  getCoaches(): Observable<User[]> {
     return this._http.get<User[]>(this._coachUrl);
+  }
+
+  getCoachById(coachId: string): Observable<User> {
+    return this._http.get<User>(`${this._coachUrl}/${coachId}`);
   }
 }
