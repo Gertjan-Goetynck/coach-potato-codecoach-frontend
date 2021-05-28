@@ -13,14 +13,15 @@ export class UserMainNavComponent implements OnInit {
   constructor(private _authService: AuthService) { }
 
   ngOnInit(): void {
+    this._userId = this.getUserId();
   }
 
   get userId(): string {
     return this._userId;
   }
 
-  @Input() set userId(userId: string) {
-    this._userId = userId;
+  getUserId(): string {
+    return this._authService.getCurrentUserId();
   }
 
   isCoach() {
