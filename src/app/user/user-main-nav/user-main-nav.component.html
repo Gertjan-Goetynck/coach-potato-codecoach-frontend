@@ -7,13 +7,16 @@
   <div class="collapse navbar-collapse justify-content-end " id="navbarNav">
     <ul class="navbar-nav font-weight-bold ">
       <li class="nav-item">
-        <a class="nav-link" routerLink="/users/{{userId}}">My Profile</a>
+        <a class="nav-link" routerLinkActive="text-dark font-weight-bold" [routerLinkActiveOptions]="{exact: true}"
+          routerLink="/users/{{userId}}">My Profile</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" routerLink="/coaches">Find a Coach</a>
+        <a class="nav-link" routerLinkActive="text-dark font-weight-bold" [routerLinkActiveOptions]="{exact: true}"
+          routerLink="/coaches">Find a Coach</a>
       </li>
       <li class="nav-item" *ngIf="isCoach()">
-        <a class="nav-link" routerLink="/coaches/{{userId}}">My Coach Profile</a>
+        <a class="nav-link" routerLinkActive="text-dark font-weight-bold" [routerLinkActiveOptions]="{exact: true}"
+          routerLink="/coaches/{{userId}}">My Coach Profile</a>
       </li>
     </ul>
   </div>
