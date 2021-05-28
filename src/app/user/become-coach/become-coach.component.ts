@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { UserService } from "../../services/user.service";
-import { ActivatedRoute } from "@angular/router";
+import {Component, OnInit} from '@angular/core';
+import {UserService} from "../../services/user.service";
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
   selector: 'app-become-coach',
@@ -40,9 +40,11 @@ export class BecomeCoachComponent implements OnInit {
 
   becomeCoach() {
     this._userService.becomeCoach(this._user.id).subscribe(user => {
-      this._user = user;
-      this._successMessage = "You are a coach now!"
-    },
+        this._user = user;
+        localStorage.setItem('userRoles', JSON.stringify(user.roles));
+
+        this._successMessage = "You are a coach now!"
+      },
       error => this._successMessage = error.error.message);
   }
 
