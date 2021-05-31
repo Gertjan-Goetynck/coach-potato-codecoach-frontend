@@ -1,2 +1,4 @@
 <app-user-main-nav *ngIf="isAuthenticated"></app-user-main-nav>
 <app-coach-detail *ngIf="coach" [coach]="coach"></app-coach-detail>
+<a routerLink="/coaches/{{coach.id}}/requestsession" class="btn btn-warning btn-outline  mt-auto">Request
+    Session <i class="fas fa-chevron-right"></i></a>

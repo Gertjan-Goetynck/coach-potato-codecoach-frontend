@@ -7,84 +7,82 @@
       <div class="row">
         <div class="col-md-12">
           <div class="form-group">
-            <label for="exampleFormControlSelect1" >Select Topic</label>
+            <label for="exampleFormControlSelect1">Topic</label>
             <select class="form-control" formControlName="topicId" id="exampleFormControlSelect1">
-              <option [value]="topic.topic.id" *ngFor="let topic of coach.coachProfile.coachTopics">{{topic.topic.topic}}</option>
+              <option [value]="topic.topic.id" *ngFor="let topic of coach.coachProfile.coachTopics">
+                {{topic.topic.topic}}</option>
             </select>
+          </div>
+          <div class="invalid-feedback"
+            *ngIf="requestSessionForm.controls['topicId'].errors && requestSessionForm.controls['topicId'].errors.required">
+            <span>Topic is required</span>
           </div>
         </div>
       </div>
 
-          <div class="row">
-            <div class="col-md-12">
-              <div class="form-group">
-                <label for="date">Date</label>
-                <div class="input-group">
-                  <input type="text" ngbDatepicker #d="ngbDatepicker" [minDate]="today" name="date" id="date"
-                         class="form-control"
-                         formControlName='date' [class]="{
+      <div class="row">
+        <div class="col-md-12">
+          <div class="form-group">
+            <label for="date">Date</label>
+            <div class="input-group">
+              <input type="text" ngbDatepicker #d="ngbDatepicker" [minDate]="today" name="date" id="date"
+                class="form-control" formControlName='date' [class]="{
               'is-invalid':(requestSessionForm.controls['date'].errors && requestSessionForm.controls['date'].touched ),
               'is-valid':!requestSessionForm.controls['date'].errors && requestSessionForm.controls['date'].touched}">
-                  <div class="input-group-append">
-                    <button class="btn btn-outline-secondary calendar" (click)="d.toggle()" type="button"><i
-                      class="fas fa-calendar-alt"></i></button>
-                  </div>
-                </div>
-
-                <div class="invalid-feedback"
-                     *ngIf="requestSessionForm.controls['date'].errors && requestSessionForm.controls['date'].errors.required">
-                  <span>Date is required</span>
-                </div>
+              <div class="input-group-append">
+                <button class="btn btn-outline-secondary calendar" (click)="d.toggle()" type="button"><i
+                    class="fas fa-calendar-alt"></i></button>
               </div>
             </div>
-          </div>
 
-          <div class="row">
-            <div class="col-md-12">
-              <div class="form-group">
-                <label for="time">Time</label>
-                <ngb-timepicker name="time" id="time" class="form-control" formControlName='time'></ngb-timepicker>
-
-              </div>
-              <div class="invalid-feedback"
-                   *ngIf="requestSessionForm.controls['time'].errors && requestSessionForm.controls['time'].errors.required">
-                <span>Time is required</span>
-              </div>
-
+            <div class="invalid-feedback"
+              *ngIf="requestSessionForm.controls['date'].errors && requestSessionForm.controls['date'].errors.required">
+              <span>Date is required</span>
             </div>
           </div>
+        </div>
+      </div>
 
-          <div class="row">
-            <div class="col-md-12">
-              <div class="form-group">
-                <label for="location">Location</label>
-                <input type="text" name="location" id="location" class="form-control" formControlName='location'
-                       [class]="{
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="time">Time</label>
+            <ngb-timepicker formControlName="time"></ngb-timepicker>
+
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-12">
+          <div class="form-group">
+            <label for="location">Location</label>
+            <input type="text" name="location" id="location" class="form-control" formControlName='location' [class]="{
               'is-invalid':(requestSessionForm.controls['location'].errors && requestSessionForm.controls['location'].touched ),
               'is-valid':!requestSessionForm.controls['location'].errors && requestSessionForm.controls['location'].touched
           }">
-                <div class="invalid-feedback"
-                     *ngIf="requestSessionForm.controls['location'].errors && requestSessionForm.controls['location'].errors.required">
-                  <span>Location is required</span>
-                </div>
-              </div>
+            <div class="invalid-feedback"
+              *ngIf="requestSessionForm.controls['location'].errors && requestSessionForm.controls['location'].errors.required">
+              <span>Location is required</span>
             </div>
           </div>
+        </div>
+      </div>
 
-          <div class="row">
-            <div class="col-md-12">
-              <div class="form-group">
-                <label for="remarks">Remarks (optional)</label>
-                <input type="text" name="remarks" id="remarks" class="form-control" formControlName='remarks'>
-              </div>
-            </div>
+      <div class="row">
+        <div class="col-md-12">
+          <div class="form-group">
+            <label for="remarks">Remarks (optional)</label>
+            <input type="text" name="remarks" id="remarks" class="form-control" formControlName='remarks'>
           </div>
+        </div>
+      </div>
 
-          <div class="row">
-            <div class="md-12">
-              <button type="submit" class="btn btn-primary" [disabled]="!requestSessionForm.valid">Submit</button>
-            </div>
-          </div>
+      <div class="row">
+        <div class="md-12">
+          <button type="submit" class="btn btn-primary" [disabled]="!requestSessionForm.valid">Submit</button>
+        </div>
+      </div>
     </form>
 
   </div>
