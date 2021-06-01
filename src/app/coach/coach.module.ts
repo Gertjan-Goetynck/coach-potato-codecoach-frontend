@@ -10,6 +10,7 @@ import { UserMenuComponent } from '../user/user-menu/user-menu.component';
 import { UserModule } from '../user/user.module';
 import { CoachDetailComponent } from './coach-detail/coach-detail.component';
 import { CoachDetailViewComponent } from './coach-detail-view/coach-detail-view.component';
+import { CoachCoachingSessionListComponent } from './coach-coaching-session-list/coach-coaching-session-list.component';
 
 
 
@@ -20,7 +21,8 @@ import { CoachDetailViewComponent } from './coach-detail-view/coach-detail-view.
     CoachMainNavComponent,
     CoachListComponent,
     CoachDetailComponent,
-    CoachDetailViewComponent
+    CoachDetailViewComponent,
+    CoachCoachingSessionListComponent
   ],
   imports: [
     CommonModule,

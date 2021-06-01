@@ -25,4 +25,8 @@ export class CoachingSessionService {
     return this._http.get<CoachSession[]>(`${this._sessionUrl}/coachee/${coacheeId}`);
   }
 
+  getCoachingSessionsByCoachId(coachId: string){
+    return this._http.get<CoachSession[]>(`${this._sessionUrl}/coach/${coachId}`);
+  }
+
 }
