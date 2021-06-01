@@ -1,6 +1,6 @@
 <h2 class="display-4 text-center title-color">Request a Coaching
   Session</h2>
-<div class="card">
+<div class="card" *ngIf="coach">
   <div class="card-body">
 
     <form [formGroup]="requestSessionForm" (ngSubmit)="onSubmit()">

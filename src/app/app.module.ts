@@ -10,11 +10,11 @@ import { UserModule } from './user/user.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CoachModule } from './coach/coach.module';
 import { AuthModule } from './auth/auth.module';
-import {CoachingSessionModule} from "./coach-session/coaching-session.module";
+import { CoachingSessionModule } from "./coach-session/coaching-session.module";
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     BrowserModule,

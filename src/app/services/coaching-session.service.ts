@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from "@angular/common/http";
-import {environment} from "../../environments/environment";
-import {CoachSession} from "../models/coach-session";
-import {Observable} from "rxjs/internal/Observable";
-import {Coach} from "../models/coach";
+import { HttpClient } from "@angular/common/http";
+import { environment } from "../../environments/environment";
+import { CoachSession } from "../models/coach-session";
+import { Observable } from "rxjs/internal/Observable";
+import { Coach } from "../models/coach";
 
 @Injectable({
   providedIn: 'root'
@@ -16,10 +16,13 @@ export class CoachingSessionService {
     this._sessionUrl = `${environment.backendUrl}/coachsessions`;
   }
 
-  organiseCoachSession(coachSession): Observable<CoachSession>{
+  organiseCoachSession(coachSession): Observable<CoachSession> {
     console.log(coachSession);
     return this._http.post<CoachSession>(this._sessionUrl, coachSession);
   }
 
+  getCoachingSesionsByCoacheeId(coacheeId: string) {
+    return this._http.get<CoachSession[]>(`${this._sessionUrl}/coachee/${coacheeId}`);
+  }
 
 }

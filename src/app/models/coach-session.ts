@@ -6,6 +6,7 @@ export interface CoachSession {
   date: string,
   time: string,
   location: string,
-  remarks: string
+  remarks: string,
+  status: string
 
 }
