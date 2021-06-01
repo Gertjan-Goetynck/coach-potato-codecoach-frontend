@@ -10,32 +10,32 @@
         <h4 class="card-title">My upcoming sessions</h4>
 
         <div class="d-flex justify-content-center" *ngIf="!coachingSessions">
-          <div class="spinner-border text-warning" role="status">
+          <div class="spinner-border" role="status">
             <span class="sr-only">Loading...</span>
           </div>
         </div>
         <table class="table table-striped" *ngIf="coachingSessions">
           <thead>
-          <tr>
-            <th scope=" col">Coachee</th>
-            <th scope="col">Subject</th>
-            <th scope="col">Date</th>
-            <th scope="col">Time</th>
-            <th scope="col">Location</th>
-            <th scope="col">Status</th>
-            <th scope="col">Actions</th>
-          </tr>
+            <tr>
+              <th scope=" col">Coachee</th>
+              <th scope="col">Subject</th>
+              <th scope="col">Date</th>
+              <th scope="col">Time</th>
+              <th scope="col">Location</th>
+              <th scope="col">Status</th>
+              <th scope="col">Actions</th>
+            </tr>
           </thead>
           <tbody>
-          <tr *ngFor="let session of coachingSessions; index as i">
-            <td>{{session.coachee.firstName}} {{session.coachee.lastName}}</td>
-            <td>{{session.topic.topic}}</td>
-            <td>{{session.date}}</td>
-            <td>{{session.time}}</td>
-            <td>{{session.location}}</td>
-            <td>{{session.status}}</td>
-            <td>ACTION</td>
-          </tr>
+            <tr *ngFor="let session of coachingSessions; index as i">
+              <td>{{session.coachee.firstName}} {{session.coachee.lastName}}</td>
+              <td>{{session.topic.topic}}</td>
+              <td>{{session.date}}</td>
+              <td>{{session.time}}</td>
+              <td>{{session.location}}</td>
+              <td>{{session.status}}</td>
+              <td>ACTION</td>
+            </tr>
           </tbody>
         </table>
       </div>
@@ -43,4 +43,3 @@
 
   </div>
 </div>
-

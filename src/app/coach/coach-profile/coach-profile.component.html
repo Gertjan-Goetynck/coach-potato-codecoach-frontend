@@ -1,14 +1,19 @@
-<app-coach-main-nav *ngIf="coach" [userId]="coach.id"></app-coach-main-nav>
+<app-coach-main-nav></app-coach-main-nav>
 
 
-<div class="row" *ngIf="coach">
+<div class="row">
   <div class="col-md-3">
-    <app-coach-menu >
+    <app-coach-menu>
 
     </app-coach-menu>
   </div>
   <div class="col-md-9">
-    <app-coach-detail [coach]="coach"></app-coach-detail>
+    <div class="d-flex justify-content-center" *ngIf="!coach">
+      <div class="spinner-border" role="status">
+        <span class="sr-only">Loading...</span>
+      </div>
+    </div>
+    <app-coach-detail [coach]="coach" *ngIf="coach"></app-coach-detail>
     <!--
     <div class="row">
       <div class="col-md-12">

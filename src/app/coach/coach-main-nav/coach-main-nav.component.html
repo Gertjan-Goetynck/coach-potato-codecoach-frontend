@@ -8,15 +8,15 @@
     <ul class="navbar-nav">
       <li class="nav-item">
         <a class="nav-link" routerLinkActive="text-white font-weight-bold" [routerLinkActiveOptions]="{exact: true}"
-          routerLink="/users/{{userId}}">My Profile</a>
+          routerLink="/users/{{getUserId()}}">My Profile</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" routerLinkActive="text-white font-weight-bold" [routerLinkActiveOptions]="{exact: true}"
           routerLink="/coaches">Find a Coach</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" routerLinkActive="text-white font-weight-bold" [routerLinkActiveOptions]="{exact: true}"
-          routerLink="/coaches/{{userId}}">My Coach Profile</a>
+        <a class="nav-link" routerLinkActive="text-white font-weight-bold" routerLink="/coaches/{{getUserId()}}">My
+          Coach Profile</a>
       </li>
     </ul>
   </div>
