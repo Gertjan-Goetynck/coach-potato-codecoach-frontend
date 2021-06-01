@@ -41,8 +41,9 @@ export class CreateCoachSessionFormComponent implements OnInit {
       ...this._requestSessionForm.value,
       coacheeId: this._authService.getCurrentUserId(),
       coachId: this._authService.getCurrentUserId(),
-      time:`${this._requestSessionForm.value.time.hour}:${this._requestSessionForm.value.time.minute}:${this._requestSessionForm.value.time.second}`,
-      date:`${this._requestSessionForm.value.date.year}-${this._requestSessionForm.value.date.month}-${this._requestSessionForm.value.date.day}`
+      time:`${('0'+ this._requestSessionForm.value.time.hour).slice(-2)}:${('0' + this._requestSessionForm.value.time.minute).slice(-2)}:${('0' + this._requestSessionForm.value.time.second).slice(-2)}`,
+
+      date:`${this._requestSessionForm.value.date.year}-${('0' + this._requestSessionForm.value.date.month).slice(-2)}-${('0' + this._requestSessionForm.value.date.day).slice(-2)}`
 
     }).subscribe(coachSession => { this._router.navigate([`/users/${this._authService.getCurrentUserId()}`])
     })
