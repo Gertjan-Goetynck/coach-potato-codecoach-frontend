@@ -17,6 +17,7 @@ export class CoachingSessionService {
   }
 
   organiseCoachSession(coachSession): Observable<CoachSession>{
+    console.log(coachSession);
     return this._http.post<CoachSession>(this._sessionUrl, coachSession);
   }
 

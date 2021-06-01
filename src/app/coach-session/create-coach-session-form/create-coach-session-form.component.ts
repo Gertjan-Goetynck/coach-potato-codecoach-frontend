@@ -37,8 +37,13 @@ export class CreateCoachSessionFormComponent implements OnInit {
   onSubmit(): void {
     console.log(this._requestSessionForm);
 
-    this._coachSessionService.organiseCoachSession({...this._requestSessionForm.value,
-      coacheeId: this._authService.getCurrentUserId(), coachId: this._authService.getCurrentUserId()
+    this._coachSessionService.organiseCoachSession({
+      ...this._requestSessionForm.value,
+      coacheeId: this._authService.getCurrentUserId(),
+      coachId: this._authService.getCurrentUserId(),
+      time:`${this._requestSessionForm.value.time.hour}:${this._requestSessionForm.value.time.minute}:${this._requestSessionForm.value.time.second}`,
+      date:`${this._requestSessionForm.value.date.year}-${this._requestSessionForm.value.date.month}-${this._requestSessionForm.value.date.day}`
+
     }).subscribe(coachSession => { this._router.navigate([`/users/${this._authService.getCurrentUserId()}`])
     })
   }
