@@ -1,13 +1,14 @@
-import { Injectable } from '@angular/core';
-import { Router } from '@angular/router';
-import { Role } from '../models/role';
+import {Injectable} from '@angular/core';
+import {Router} from '@angular/router';
+import {Role} from '../models/role';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  constructor(private router: Router) { }
+  constructor(private router: Router) {
+  }
 
   isCoach(): boolean {
     const roles: Role[] = JSON.parse(localStorage.getItem("userRoles"));
@@ -26,9 +27,13 @@ export class AuthService {
   }
 
   getCurrentUserId(): string {
-    if(this.isAuthenticated) {
+    if (this.isAuthenticated) {
       return localStorage.getItem("userId");
     }
-      return null;
+    return null;
+  }
+
+  isOwnProfile(id: string): boolean {
+    return id === this.getCurrentUserId();
   }
 }

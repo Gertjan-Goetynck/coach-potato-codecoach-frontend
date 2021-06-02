@@ -14,12 +14,14 @@ export class CoachDetailViewComponent implements OnInit {
 
   private _isAuthenticated: boolean;
   private _coach: User;
+  private _isOwnProfile: boolean;
 
   constructor(private _userService: UserService, private _route: ActivatedRoute, private _authService: AuthService) { }
 
   ngOnInit(): void {
     this._isAuthenticated = this._authService.isAuthenticated();
     this.getCoach();
+    this._isOwnProfile= this._authService.isOwnProfile(this._route.snapshot.params.id);
   }
 
   get coach(): User {
@@ -32,5 +34,9 @@ export class CoachDetailViewComponent implements OnInit {
 
   private getCoach(): void {
     this._userService.getUserById(this._route.snapshot.params.id).subscribe(coach => this._coach = coach);
+  }
+
+  get isOwnProfile(): boolean{
+    return this._isOwnProfile;
   }
 }
