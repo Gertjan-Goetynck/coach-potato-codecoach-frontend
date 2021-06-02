@@ -11,7 +11,8 @@ import { UserModule } from '../user/user.module';
 import { CoachDetailComponent } from './coach-detail/coach-detail.component';
 import { CoachDetailViewComponent } from './coach-detail-view/coach-detail-view.component';
 import { CoachCoachingSessionListComponent } from './coach-coaching-session-list/coach-coaching-session-list.component';
-import {PipesModule} from "../pipes/pipes.module";
+import { PipesModule } from "../pipes/pipes.module";
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -23,14 +24,16 @@ import {PipesModule} from "../pipes/pipes.module";
     CoachListComponent,
     CoachDetailComponent,
     CoachDetailViewComponent,
-    CoachCoachingSessionListComponent
+    CoachCoachingSessionListComponent,
   ],
   imports: [
     CommonModule,
     RouterModule,
     CoachRoutingModule,
     UserModule,
-    PipesModule
+    PipesModule,
+    FormsModule,
+    ReactiveFormsModule
   ]
 })
 export class CoachModule { }
