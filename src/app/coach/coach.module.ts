@@ -11,6 +11,7 @@ import { UserModule } from '../user/user.module';
 import { CoachDetailComponent } from './coach-detail/coach-detail.component';
 import { CoachDetailViewComponent } from './coach-detail-view/coach-detail-view.component';
 import { CoachCoachingSessionListComponent } from './coach-coaching-session-list/coach-coaching-session-list.component';
+import {PipesModule} from "../pipes/pipes.module";
 
 
 
@@ -28,7 +29,8 @@ import { CoachCoachingSessionListComponent } from './coach-coaching-session-list
     CommonModule,
     RouterModule,
     CoachRoutingModule,
-    UserModule
+    UserModule,
+    PipesModule
   ]
 })
 export class CoachModule { }
