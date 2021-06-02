@@ -9,8 +9,14 @@ export class TransformSessionStatusPipe implements PipeTransform {
     switch (status) {
       case 'REQUESTED':
         return 'Requested';
+      case 'ACCEPTED':
+        return 'Accepted';
+      case 'DECLINED':
+        return 'Declined';
       case 'AUTOMATICALLY_CLOSED':
         return 'Finished (automatically closed)';
+      case 'DONE_WAITING_FEEDBACK':
+        return 'Done - Awaiting Feedback';
       default:
         return status;
     }
