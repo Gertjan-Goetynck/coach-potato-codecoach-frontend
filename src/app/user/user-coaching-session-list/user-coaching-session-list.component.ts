@@ -13,6 +13,7 @@ export class UserCoachingSessionListComponent implements OnInit {
 
   private _upcommingCoachingSessions: CoachSession[] = [];
   private _archivedCoachingSessions: CoachSession[] = [];
+  loadedTables = false;
 
   constructor(private _coachingSessionService: CoachingSessionService, private _route: ActivatedRoute, private _authService: AuthService) { }
 
@@ -22,7 +23,10 @@ export class UserCoachingSessionListComponent implements OnInit {
 
 
   getCoachingSessions() {
-    this._coachingSessionService.getCoachingSesionsByCoacheeId(this._route.snapshot.params.id).subscribe(coachingSessions => this.filterSessionsByStatus(coachingSessions));
+    this._coachingSessionService.getCoachingSesionsByCoacheeId(this._route.snapshot.params.id).subscribe(coachingSessions => {
+      this.filterSessionsByStatus(coachingSessions);
+      this.loadedTables = true;
+    });
   }
 
   filterSessionsByStatus(coachingSessions: CoachSession[]) {
