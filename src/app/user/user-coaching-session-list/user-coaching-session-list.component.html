@@ -1,6 +1,6 @@
 <app-user-main-nav *ngIf="isAuthenticated()"></app-user-main-nav>
 
-<div class="row">
+<div class="row mb-2">
     <div class="col-md-3">
         <app-user-menu *ngIf="isAuthenticated()"></app-user-menu>
     </div>
@@ -9,12 +9,12 @@
             <div class="card-body">
                 <h4 class="card-title">My upcoming sessions</h4>
 
-                <div class="d-flex justify-content-center" *ngIf="!coachingSessions">
+                <div class="d-flex justify-content-center" *ngIf="!upcommingCoachingSessions">
                     <div class="spinner-border text-warning" role="status">
                         <span class="sr-only">Loading...</span>
                     </div>
                 </div>
-                <table class="table table-striped" *ngIf="coachingSessions">
+                <table class="table table-striped" *ngIf="upcommingCoachingSessions">
                     <thead>
                         <tr>
                             <th scope=" col">Coach</th>
@@ -27,13 +27,55 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr *ngFor="let session of coachingSessions; index as i">
+                        <tr *ngFor="let session of upcommingCoachingSessions">
                             <td>{{session.coach.firstName}} {{session.coach.lastName}}</td>
                             <td>{{session.topic.topic}}</td>
                             <td>{{session.date}}</td>
                             <td>{{session.time}}</td>
                             <td>{{session.location}}</td>
-                            <td>{{session.status}}</td>
+                            <td>{{session.status | transformSessionStatus}}</td>
+                            <td>ACTION</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<div class="row mb-2">
+
+    <div class="offset-md-3 col-md-9 ">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">My archive</h4>
+
+                <div class="d-flex justify-content-center" *ngIf="!archivedCoachingSessions">
+                    <div class="spinner-border text-warning" role="status">
+                        <span class="sr-only">Loading...</span>
+                    </div>
+                </div>
+                <table class="table table-striped" *ngIf="archivedCoachingSessions">
+                    <thead>
+                        <tr>
+                            <th scope=" col">Coach</th>
+                            <th scope="col">Subject</th>
+                            <th scope="col">Date</th>
+                            <th scope="col">Time</th>
+                            <th scope="col">Location</th>
+                            <th scope="col">Status</th>
+                            <th scope="col">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let session of archivedCoachingSessions">
+                            <td>{{session.coach.firstName}} {{session.coach.lastName}}</td>
+                            <td>{{session.topic.topic}}</td>
+                            <td>{{session.date}}</td>
+                            <td>{{session.time}}</td>
+                            <td>{{session.location}}</td>
+                            <td>{{session.status | transformSessionStatus}}</td>
                             <td>ACTION</td>
                         </tr>
                     </tbody>

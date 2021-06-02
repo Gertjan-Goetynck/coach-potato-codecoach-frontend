@@ -11,7 +11,9 @@ import { CoachingSessionService } from 'src/app/services/coaching-session.servic
 })
 export class UserCoachingSessionListComponent implements OnInit {
 
-  private _coachingSessions: CoachSession[];
+  private _upcommingCoachingSessions: CoachSession[] = [];
+  private _archivedCoachingSessions: CoachSession[] = [];
+
   constructor(private _coachingSessionService: CoachingSessionService, private _route: ActivatedRoute, private _authService: AuthService) { }
 
   ngOnInit(): void {
@@ -20,11 +22,28 @@ export class UserCoachingSessionListComponent implements OnInit {
 
 
   getCoachingSessions() {
-    this._coachingSessionService.getCoachingSesionsByCoacheeId(this._route.snapshot.params.id).subscribe(coachingSessions => this._coachingSessions = coachingSessions);
+    this._coachingSessionService.getCoachingSesionsByCoacheeId(this._route.snapshot.params.id).subscribe(coachingSessions => this.filterSessionsByStatus(coachingSessions));
   }
 
-  get coachingSessions(): CoachSession[] {
-    return this._coachingSessions;
+  filterSessionsByStatus(coachingSessions: CoachSession[]) {
+    coachingSessions.forEach(coachingSession => {
+      switch (coachingSession.status) {
+        case 'AUTOMATICALLY_CLOSED':
+          this._archivedCoachingSessions.push(coachingSession);
+          break;
+        case 'REQUESTED':
+          this._upcommingCoachingSessions.push(coachingSession);
+          break;
+      }
+    })
+  }
+
+  get upcommingCoachingSessions(): CoachSession[] {
+    return this._upcommingCoachingSessions;
+  }
+
+  get archivedCoachingSessions(): CoachSession[] {
+    return this._archivedCoachingSessions;
   }
 
   isAuthenticated(): boolean {

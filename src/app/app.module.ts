@@ -14,8 +14,7 @@ import { CoachingSessionModule } from "./coach-session/coaching-session.module";
 
 @NgModule({
   declarations: [
-    AppComponent,
-  ],
+    AppComponent],
   imports: [
     BrowserModule,
     LayoutModule,

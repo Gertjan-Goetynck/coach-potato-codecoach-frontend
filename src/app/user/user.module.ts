@@ -11,6 +11,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { UserRoutingModule } from './user-routing.module';
 import { UserMainNavComponent } from './user-main-nav/user-main-nav.component';
 import { UserCoachingSessionListComponent } from './user-coaching-session-list/user-coaching-session-list.component';
+import { PipesModule } from '../pipes/pipes.module';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { UserCoachingSessionListComponent } from './user-coaching-session-list/u
     ReactiveFormsModule,
     RouterModule,
     UserRoutingModule,
-    NgbModule
+    PipesModule,
+    NgbModule,
   ],
   exports: [
     UserMainNavComponent
