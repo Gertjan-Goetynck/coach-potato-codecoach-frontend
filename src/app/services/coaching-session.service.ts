@@ -17,7 +17,6 @@ export class CoachingSessionService {
   }
 
   organiseCoachSession(coachSession): Observable<CoachSession> {
-    console.log(coachSession);
     return this._http.post<CoachSession>(this._sessionUrl, coachSession);
   }
 
@@ -27,6 +26,14 @@ export class CoachingSessionService {
 
   getCoachingSessionsByCoachId(coachId: string){
     return this._http.get<CoachSession[]>(`${this._sessionUrl}/coach/${coachId}`);
+  }
+
+  acceptCoachSession(sessionId: string) {
+    return this._http.post<CoachSession>(`${this._sessionUrl}/${sessionId}/accept`, null);
+  }
+
+  declineCoachSession(sessionId: string) {
+    return this._http.post<CoachSession>(`${this._sessionUrl}/${sessionId}/decline`, null);
   }
 
 }

@@ -67,6 +67,14 @@ export class CoachCoachingSessionListComponent implements OnInit {
     return this._awaitingFeedbackCoachingSessions;
   }
 
+  acceptSession(id: string) {
+    this._coachingSessionService.acceptCoachSession(id).subscribe();
+  }
+
+  declineSession(id: string) {
+    this._coachingSessionService.declineCoachSession(id).subscribe();
+  }
+
   isAuthenticated(): boolean {
     return this._authService.isAuthenticated();
   }
