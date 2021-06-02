@@ -16,26 +16,35 @@
         </div>
         <table class="table table-striped" *ngIf="loadedTables">
           <thead>
-            <tr>
-              <th scope=" col">Coachee</th>
-              <th scope="col">Subject</th>
-              <th scope="col">Date</th>
-              <th scope="col">Time</th>
-              <th scope="col">Location</th>
-              <th scope="col">Status</th>
-              <th scope="col">Actions</th>
-            </tr>
+          <tr>
+            <th scope=" col">Coachee</th>
+            <th scope="col">Subject</th>
+            <th scope="col">Date</th>
+            <th scope="col">Time</th>
+            <th scope="col">Location</th>
+            <th scope="col">Status</th>
+            <th scope="col">Actions</th>
+          </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let session of upcomingCoachingSessions; index as i">
-              <td>{{session.coachee.firstName}} {{session.coachee.lastName}}</td>
-              <td>{{session.topic.topic}}</td>
-              <td>{{session.date}}</td>
-              <td>{{session.time}}</td>
-              <td>{{session.location}}</td>
-              <td>{{session.status | transformSessionStatus}}</td>
-              <td>ACTION</td>
-            </tr>
+          <tr *ngFor="let session of upcomingCoachingSessions; index as i">
+            <td>{{session.coachee.firstName}} {{session.coachee.lastName}}</td>
+            <td>{{session.topic.topic}}</td>
+            <td>{{session.date| date:'dd-MM-yyyy'}}</td>
+            <td>{{session.time}}</td>
+            <td>{{session.location}}</td>
+            <td>{{session.status | transformSessionStatus}}</td>
+            <td>
+              <a *ngIf="session.status==='REQUESTED'"
+                 class="btn btn-success"
+                 (click)="acceptSession(session.id)">Accept
+                <i class="fas fa-check"></i></a>
+              <a *ngIf="session.status==='REQUESTED'"
+                 class="btn btn-danger"
+                 (click)="declineSession(session.id)">Decline
+                <i class="fas fa-times"></i></a>
+            </td>
+          </tr>
           </tbody>
         </table>
       </div>
@@ -68,14 +77,15 @@
           </tr>
           </thead>
           <tbody>
-          <tr *ngFor="let session of awaitingFeedbackCoachingSessions; index as i">
+          <tr
+            *ngFor="let session of awaitingFeedbackCoachingSessions; index as i">
             <td>{{session.coachee.firstName}} {{session.coachee.lastName}}</td>
             <td>{{session.topic.topic}}</td>
-            <td>{{session.date}}</td>
+            <td>{{session.date| date:'dd-MM-yyyy'}}</td>
             <td>{{session.time}}</td>
             <td>{{session.location}}</td>
             <td>{{session.status | transformSessionStatus}}</td>
-            <td>ACTION</td>
+            <td></td>
           </tr>
           </tbody>
         </table>
@@ -112,11 +122,11 @@
           <tr *ngFor="let session of archivedCoachingSessions; index as i">
             <td>{{session.coachee.firstName}} {{session.coachee.lastName}}</td>
             <td>{{session.topic.topic}}</td>
-            <td>{{session.date}}</td>
+            <td>{{session.date| date:'dd-MM-yyyy'}}</td>
             <td>{{session.time}}</td>
             <td>{{session.location}}</td>
             <td>{{session.status | transformSessionStatus}}</td>
-            <td>ACTION</td>
+            <td></td>
           </tr>
           </tbody>
         </table>

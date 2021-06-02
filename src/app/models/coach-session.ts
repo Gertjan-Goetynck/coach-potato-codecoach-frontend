@@ -1,5 +1,6 @@
 export interface CoachSession {
 
+  id: string,
   coacheeId: string,
   coachId: string,
   topicId: string,
@@ -8,5 +9,4 @@ export interface CoachSession {
   location: string,
   remarks: string,
   status: string
-
 }

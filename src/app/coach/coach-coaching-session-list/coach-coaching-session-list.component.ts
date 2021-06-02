@@ -25,6 +25,10 @@ export class CoachCoachingSessionListComponent implements OnInit {
   }
 
   getCoachingSessions() {
+    this._archivedCoachingSessions = [];
+    this._upcomingCoachingSessions = [];
+    this._awaitingFeedbackCoachingSessions = [];
+    this.loadedTables = false;
     this._coachingSessionService.getCoachingSessionsByCoachId(this._route.snapshot.params.id).subscribe(coachingSessions => {
       this.filterSessionsByStatus(coachingSessions);
       this.loadedTables = true;
@@ -68,11 +72,11 @@ export class CoachCoachingSessionListComponent implements OnInit {
   }
 
   acceptSession(id: string) {
-    this._coachingSessionService.acceptCoachSession(id).subscribe();
+    this._coachingSessionService.acceptCoachSession(id).subscribe(() => this.getCoachingSessions());
   }
 
   declineSession(id: string) {
-    this._coachingSessionService.declineCoachSession(id).subscribe();
+    this._coachingSessionService.declineCoachSession(id).subscribe(() => this.getCoachingSessions());
   }
 
   isAuthenticated(): boolean {

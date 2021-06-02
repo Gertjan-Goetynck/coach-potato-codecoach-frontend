@@ -30,11 +30,11 @@
                         <tr *ngFor="let session of upcommingCoachingSessions">
                             <td>{{session.coach.firstName}} {{session.coach.lastName}}</td>
                             <td>{{session.topic.topic}}</td>
-                            <td>{{session.date}}</td>
+                            <td>{{session.date| date:'dd-MM-yyyy'}}</td>
                             <td>{{session.time}}</td>
                             <td>{{session.location}}</td>
                             <td>{{session.status | transformSessionStatus}}</td>
-                            <td>ACTION</td>
+                            <td></td>
                         </tr>
                     </tbody>
                 </table>
@@ -72,11 +72,11 @@
         <tr *ngFor="let session of awaitingFeedbackCoachingSessions">
           <td>{{session.coach.firstName}} {{session.coach.lastName}}</td>
           <td>{{session.topic.topic}}</td>
-          <td>{{session.date}}</td>
+          <td>{{session.date| date:'dd-MM-yyyy'}}</td>
           <td>{{session.time}}</td>
           <td>{{session.location}}</td>
           <td>{{session.status | transformSessionStatus}}</td>
-          <td>ACTION</td>
+          <td></td>
         </tr>
         </tbody>
       </table>
@@ -114,11 +114,11 @@
                         <tr *ngFor="let session of archivedCoachingSessions">
                             <td>{{session.coach.firstName}} {{session.coach.lastName}}</td>
                             <td>{{session.topic.topic}}</td>
-                            <td>{{session.date}}</td>
+                            <td>{{session.date| date:'dd-MM-yyyy'}}</td>
                             <td>{{session.time}}</td>
                             <td>{{session.location}}</td>
                             <td>{{session.status | transformSessionStatus}}</td>
-                            <td>ACTION</td>
+                            <td></td>
                         </tr>
                     </tbody>
                 </table>
