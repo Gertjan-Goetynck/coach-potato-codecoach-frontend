@@ -13,6 +13,8 @@ export class CoachCoachingSessionListComponent implements OnInit {
 
   private _upcomingCoachingSessions: CoachSession[] = [];
   private _archivedCoachingSessions: CoachSession[] = [];
+  private _awaitingFeedbackCoachingSessions: CoachSession[] = [];
+
   loadedTables = false;
 
   constructor(private _coachingSessionService: CoachingSessionService, private _route: ActivatedRoute, private _authService: AuthService) {
@@ -23,19 +25,31 @@ export class CoachCoachingSessionListComponent implements OnInit {
   }
 
   getCoachingSessions() {
-    this._coachingSessionService.getCoachingSessionsByCoachId(this._route.snapshot.params.id).subscribe(coachingSessions => {this.filterSessionsByStatus(coachingSessions);
+    this._coachingSessionService.getCoachingSessionsByCoachId(this._route.snapshot.params.id).subscribe(coachingSessions => {
+      this.filterSessionsByStatus(coachingSessions);
       this.loadedTables = true;
     });
   }
 
-  filterSessionsByStatus(coachingSessions: CoachSession[]){
+  filterSessionsByStatus(coachingSessions: CoachSession[]) {
     coachingSessions.forEach(coachingSession => {
-      switch (coachingSession.status){
+      switch (coachingSession.status) {
         case 'AUTOMATICALLY_CLOSED':
           this._archivedCoachingSessions.push(coachingSession);
           break;
+        case 'DONE_WAITING_FEEDBACK':
+          this._awaitingFeedbackCoachingSessions.push(coachingSession);
+          break;
+
         case 'REQUESTED':
-          this._upcomingCoachingSessions.push(coachingSession);
+        case 'ACCEPTED':
+        case 'DECLINED': {
+          const dateSession = new Date(coachingSession.date);
+          const today = new Date();
+          if (dateSession < today) {
+            this._archivedCoachingSessions.push(coachingSession);
+          } else this._upcomingCoachingSessions.push(coachingSession);
+        }
           break;
       }
     })
@@ -45,8 +59,12 @@ export class CoachCoachingSessionListComponent implements OnInit {
     return this._upcomingCoachingSessions;
   }
 
-  get archivedCoachingSessions() : CoachSession[] {
+  get archivedCoachingSessions(): CoachSession[] {
     return this._archivedCoachingSessions;
+  }
+
+  get awaitingFeedbackCoachingSessions(): CoachSession[] {
+    return this._awaitingFeedbackCoachingSessions;
   }
 
   isAuthenticated(): boolean {
