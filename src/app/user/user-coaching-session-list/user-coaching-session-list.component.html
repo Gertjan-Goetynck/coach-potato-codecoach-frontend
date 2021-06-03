@@ -14,7 +14,7 @@
                         <span class="sr-only">Loading...</span>
                     </div>
                 </div>
-                <table class="table table-striped" *ngIf="loadedTables">
+                <table class="table table-striped" *ngIf="loadedTables && upcomingCoachingSessions.length>0">
                     <thead>
                         <tr>
                             <th scope=" col">Coach</th>
@@ -27,7 +27,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr *ngFor="let session of upcommingCoachingSessions">
+                        <tr *ngFor="let session of upcomingCoachingSessions">
                             <td>{{session.coach.firstName}} {{session.coach.lastName}}</td>
                             <td>{{session.topic.topic}}</td>
                             <td>{{session.date| date:'dd-MM-yyyy'}}</td>
@@ -38,6 +38,9 @@
                         </tr>
                     </tbody>
                 </table>
+                <p class="card-text" *ngIf="upcomingCoachingSessions.length<1 && loadedTables">You have no upcoming
+                    sessions.
+                </p>
             </div>
         </div>
 
@@ -46,44 +49,47 @@
 
 <div class="row mb-2">
 
-<div class="offset-md-3 col-md-9 ">
-  <div class="card">
-    <div class="card-body">
-      <h4 class="card-title">Awaiting for Feedback</h4>
+    <div class="offset-md-3 col-md-9 ">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Awaiting for Feedback</h4>
 
-      <div class="d-flex justify-content-center" *ngIf="!loadedTables">
-        <div class="spinner-border text-warning" role="status">
-          <span class="sr-only">Loading...</span>
+                <div class="d-flex justify-content-center" *ngIf="!loadedTables">
+                    <div class="spinner-border text-warning" role="status">
+                        <span class="sr-only">Loading...</span>
+                    </div>
+                </div>
+                <table class="table table-striped" *ngIf="loadedTables && awaitingFeedbackCoachingSessions.length>0">
+                    <thead>
+                        <tr>
+                            <th scope=" col">Coach</th>
+                            <th scope="col">Subject</th>
+                            <th scope="col">Date</th>
+                            <th scope="col">Time</th>
+                            <th scope="col">Location</th>
+                            <th scope="col">Status</th>
+                            <th scope="col">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let session of awaitingFeedbackCoachingSessions">
+                            <td>{{session.coach.firstName}} {{session.coach.lastName}}</td>
+                            <td>{{session.topic.topic}}</td>
+                            <td>{{session.date| date:'dd-MM-yyyy'}}</td>
+                            <td>{{session.time}}</td>
+                            <td>{{session.location}}</td>
+                            <td>{{session.status | transformSessionStatus}}</td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p class="card-text" *ngIf="awaitingFeedbackCoachingSessions.length<1 && loadedTables">You have no
+                    sessions
+                    awaiting feedback.</p>
+            </div>
         </div>
-      </div>
-      <table class="table table-striped" *ngIf="loadedTables">
-        <thead>
-        <tr>
-          <th scope=" col">Coach</th>
-          <th scope="col">Subject</th>
-          <th scope="col">Date</th>
-          <th scope="col">Time</th>
-          <th scope="col">Location</th>
-          <th scope="col">Status</th>
-          <th scope="col">Actions</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr *ngFor="let session of awaitingFeedbackCoachingSessions">
-          <td>{{session.coach.firstName}} {{session.coach.lastName}}</td>
-          <td>{{session.topic.topic}}</td>
-          <td>{{session.date| date:'dd-MM-yyyy'}}</td>
-          <td>{{session.time}}</td>
-          <td>{{session.location}}</td>
-          <td>{{session.status | transformSessionStatus}}</td>
-          <td></td>
-        </tr>
-        </tbody>
-      </table>
-    </div>
-  </div>
 
-</div>
+    </div>
 </div>
 
 <div class="row mb-2">
@@ -98,7 +104,7 @@
                         <span class="sr-only">Loading...</span>
                     </div>
                 </div>
-                <table class="table table-striped" *ngIf="loadedTables">
+                <table class="table table-striped" *ngIf="loadedTables && archivedCoachingSessions.length>0">
                     <thead>
                         <tr>
                             <th scope=" col">Coach</th>
@@ -122,6 +128,8 @@
                         </tr>
                     </tbody>
                 </table>
+                <p class="card-text" *ngIf="archivedCoachingSessions.length<1 && loadedTables">You have no sessions
+                    in your archive.</p>
             </div>
         </div>
 

@@ -1,8 +1,8 @@
-import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute} from '@angular/router';
-import {AuthService} from 'src/app/auth/auth.service';
-import {CoachSession} from 'src/app/models/coach-session';
-import {CoachingSessionService} from 'src/app/services/coaching-session.service';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { AuthService } from 'src/app/auth/auth.service';
+import { CoachSession } from 'src/app/models/coach-session';
+import { CoachingSessionService } from 'src/app/services/coaching-session.service';
 
 @Component({
   selector: 'app-user-coaching-session-list',
@@ -11,7 +11,7 @@ import {CoachingSessionService} from 'src/app/services/coaching-session.service'
 })
 export class UserCoachingSessionListComponent implements OnInit {
 
-  private _upcommingCoachingSessions: CoachSession[] = [];
+  private _upcomingCoachingSessions: CoachSession[] = [];
   private _archivedCoachingSessions: CoachSession[] = [];
   private _awaitingFeedbackCoachingSessions: CoachSession[] = [];
   loadedTables = false;
@@ -41,20 +41,20 @@ export class UserCoachingSessionListComponent implements OnInit {
           break;
         case 'REQUESTED':
         case 'ACCEPTED':
-        case 'DECLINED' : {
+        case 'DECLINED': {
           const dateSession = new Date(coachingSession.date);
           const today = new Date();
           if (dateSession < today) {
             this._archivedCoachingSessions.push(coachingSession);
-          } else this._upcommingCoachingSessions.push(coachingSession);
+          } else this._upcomingCoachingSessions.push(coachingSession);
         }
           break;
       }
     })
   }
 
-  get upcommingCoachingSessions(): CoachSession[] {
-    return this._upcommingCoachingSessions;
+  get upcomingCoachingSessions(): CoachSession[] {
+    return this._upcomingCoachingSessions;
   }
 
   get archivedCoachingSessions(): CoachSession[] {

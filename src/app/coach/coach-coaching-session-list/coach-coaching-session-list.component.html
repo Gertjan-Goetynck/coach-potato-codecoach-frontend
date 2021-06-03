@@ -14,39 +14,41 @@
             <span class="sr-only">Loading...</span>
           </div>
         </div>
-        <table class="table table-striped" *ngIf="loadedTables">
+        <table class="table table-striped" *ngIf="loadedTables && upcomingCoachingSessions.length>0">
           <thead>
-          <tr>
-            <th scope=" col">Coachee</th>
-            <th scope="col">Subject</th>
-            <th scope="col">Date</th>
-            <th scope="col">Time</th>
-            <th scope="col">Location</th>
-            <th scope="col">Status</th>
-            <th scope="col">Actions</th>
-          </tr>
+            <tr>
+              <th scope=" col">Coachee</th>
+              <th scope="col">Subject</th>
+              <th scope="col">Date</th>
+              <th scope="col">Time</th>
+              <th scope="col">Location</th>
+              <th scope="col">Status</th>
+              <th scope="col">Actions</th>
+            </tr>
           </thead>
           <tbody>
-          <tr *ngFor="let session of upcomingCoachingSessions; index as i">
-            <td>{{session.coachee.firstName}} {{session.coachee.lastName}}</td>
-            <td>{{session.topic.topic}}</td>
-            <td>{{session.date| date:'dd-MM-yyyy'}}</td>
-            <td>{{session.time}}</td>
-            <td>{{session.location}}</td>
-            <td>{{session.status | transformSessionStatus}}</td>
-            <td>
-              <a *ngIf="session.status==='REQUESTED'"
-                 class="btn btn-success btn-sm"
-                 (click)="acceptSession(session.id)">Accept
-                <i class="fas fa-check"></i></a>
-              <a *ngIf="session.status==='REQUESTED'"
-                 class="btn btn-danger btn-sm"
-                 (click)="declineSession(session.id)">Decline
-                <i class="fas fa-times"></i></a>
-            </td>
-          </tr>
+            <tr *ngFor="let session of upcomingCoachingSessions; index as i">
+              <td>{{session.coachee.firstName}} {{session.coachee.lastName}}</td>
+              <td>{{session.topic.topic}}</td>
+              <td>{{session.date| date:'dd-MM-yyyy'}}</td>
+              <td>{{session.time}}</td>
+              <td>{{session.location}}</td>
+              <td>{{session.status | transformSessionStatus}}</td>
+              <td>
+                <a *ngIf="session.status==='REQUESTED'" class="btn btn-success btn-sm"
+                  (click)="acceptSession(session.id)">Accept
+                  <i class="fas fa-check"></i></a>
+                <a *ngIf="session.status==='REQUESTED'" class="btn btn-danger btn-sm"
+                  (click)="declineSession(session.id)">Decline
+                  <i class="fas fa-times"></i></a>
+              </td>
+            </tr>
           </tbody>
         </table>
+        <p class="card-text" *ngIf="upcomingCoachingSessions.length<1 && loadedTables">You have no upcoming sessions.
+        </p>
+
+
       </div>
     </div>
 
@@ -64,31 +66,32 @@
             <span class="sr-only">Loading...</span>
           </div>
         </div>
-        <table class="table table-striped" *ngIf="loadedTables">
+        <table class="table table-striped" *ngIf="loadedTables && awaitingFeedbackCoachingSessions.length>0">
           <thead>
-          <tr>
-            <th scope=" col">Coachee</th>
-            <th scope="col">Subject</th>
-            <th scope="col">Date</th>
-            <th scope="col">Time</th>
-            <th scope="col">Location</th>
-            <th scope="col">Status</th>
-            <th scope="col">Actions</th>
-          </tr>
+            <tr>
+              <th scope=" col">Coachee</th>
+              <th scope="col">Subject</th>
+              <th scope="col">Date</th>
+              <th scope="col">Time</th>
+              <th scope="col">Location</th>
+              <th scope="col">Status</th>
+              <th scope="col">Actions</th>
+            </tr>
           </thead>
           <tbody>
-          <tr
-            *ngFor="let session of awaitingFeedbackCoachingSessions; index as i">
-            <td>{{session.coachee.firstName}} {{session.coachee.lastName}}</td>
-            <td>{{session.topic.topic}}</td>
-            <td>{{session.date| date:'dd-MM-yyyy'}}</td>
-            <td>{{session.time}}</td>
-            <td>{{session.location}}</td>
-            <td>{{session.status | transformSessionStatus}}</td>
-            <td></td>
-          </tr>
+            <tr *ngFor="let session of awaitingFeedbackCoachingSessions; index as i">
+              <td>{{session.coachee.firstName}} {{session.coachee.lastName}}</td>
+              <td>{{session.topic.topic}}</td>
+              <td>{{session.date| date:'dd-MM-yyyy'}}</td>
+              <td>{{session.time}}</td>
+              <td>{{session.location}}</td>
+              <td>{{session.status | transformSessionStatus}}</td>
+              <td></td>
+            </tr>
           </tbody>
         </table>
+        <p class="card-text" *ngIf="awaitingFeedbackCoachingSessions.length<1 && loadedTables">You have no sessions
+          awaiting feedback.</p>
       </div>
     </div>
 
@@ -106,30 +109,32 @@
             <span class="sr-only">Loading...</span>
           </div>
         </div>
-        <table class="table table-striped" *ngIf="loadedTables">
+        <table class="table table-striped" *ngIf="loadedTables && archivedCoachingSessions.length>0">
           <thead>
-          <tr>
-            <th scope=" col">Coachee</th>
-            <th scope="col">Subject</th>
-            <th scope="col">Date</th>
-            <th scope="col">Time</th>
-            <th scope="col">Location</th>
-            <th scope="col">Status</th>
-            <th scope="col">Actions</th>
-          </tr>
+            <tr>
+              <th scope=" col">Coachee</th>
+              <th scope="col">Subject</th>
+              <th scope="col">Date</th>
+              <th scope="col">Time</th>
+              <th scope="col">Location</th>
+              <th scope="col">Status</th>
+              <th scope="col">Actions</th>
+            </tr>
           </thead>
           <tbody>
-          <tr *ngFor="let session of archivedCoachingSessions; index as i">
-            <td>{{session.coachee.firstName}} {{session.coachee.lastName}}</td>
-            <td>{{session.topic.topic}}</td>
-            <td>{{session.date| date:'dd-MM-yyyy'}}</td>
-            <td>{{session.time}}</td>
-            <td>{{session.location}}</td>
-            <td>{{session.status | transformSessionStatus}}</td>
-            <td></td>
-          </tr>
+            <tr *ngFor="let session of archivedCoachingSessions; index as i">
+              <td>{{session.coachee.firstName}} {{session.coachee.lastName}}</td>
+              <td>{{session.topic.topic}}</td>
+              <td>{{session.date| date:'dd-MM-yyyy'}}</td>
+              <td>{{session.time}}</td>
+              <td>{{session.location}}</td>
+              <td>{{session.status | transformSessionStatus}}</td>
+              <td></td>
+            </tr>
           </tbody>
         </table>
+        <p class="card-text" *ngIf="archivedCoachingSessions.length<1 && loadedTables">You have no sessions
+          in your archive.</p>
       </div>
     </div>
 
