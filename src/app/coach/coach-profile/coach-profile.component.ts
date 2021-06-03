@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { AuthService } from 'src/app/auth/auth.service';
 import { User } from 'src/app/models/user';
 import { UserService } from 'src/app/services/user.service';
 
@@ -11,7 +12,7 @@ import { UserService } from 'src/app/services/user.service';
 export class CoachProfileComponent implements OnInit {
   private _coach: User;
 
-  constructor(private _userService: UserService, private _route: ActivatedRoute) { }
+  constructor(private _authService: AuthService, private _userService: UserService, private _route: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.getCoach();
@@ -23,6 +24,10 @@ export class CoachProfileComponent implements OnInit {
 
   get coach() {
     return this._coach;
+  }
+
+  isOwnProfile() {
+    return this._authService.isOwnProfile(this._coach.id);
   }
 }
 

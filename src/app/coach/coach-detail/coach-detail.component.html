@@ -38,7 +38,7 @@
             <div class="card-body">
                 <div class="d-flex">
                     <h4 class="card-title">Coach Information</h4>
-                    <a class="btn btn-outline-dark ml-auto rounded-circle"
+                    <a class="btn btn-outline-dark ml-auto rounded-circle" *ngIf="isEditingEnabled"
                         routerLink="/coaches/{{coach.id}}/edit/information"><i class="far fa-edit"></i></a>
                 </div>
 
