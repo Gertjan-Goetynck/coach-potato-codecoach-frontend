@@ -24,7 +24,8 @@ export class CoachListComponent implements OnInit {
   }
 
   private _filterForm = this._formBuilder.group({
-    topic: [""]
+    topic: [""],
+    searchText: [""]
   });
 
   ngOnInit(): void {
@@ -41,7 +42,6 @@ export class CoachListComponent implements OnInit {
   getTopics(): void {
     this.topicService.getTopics().subscribe(topics => this._topics = topics);
   }
-
 
   get coaches() {
     return this._coaches;
@@ -66,5 +66,4 @@ export class CoachListComponent implements OnInit {
   getCurrentUserId(): void {
     this._userId = this._authService.getCurrentUserId();
   }
-
 }
