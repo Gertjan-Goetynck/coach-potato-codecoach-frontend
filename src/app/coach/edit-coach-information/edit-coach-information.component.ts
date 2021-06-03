@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {User} from "../../models/user";
-import {CoachService} from "../../services/coach.service";
-import {ActivatedRoute} from "@angular/router";
-import {FormBuilder, Validators} from "@angular/forms";
+import { User } from "../../models/user";
+import { CoachService } from "../../services/coach.service";
+import { ActivatedRoute, Router } from "@angular/router";
+import { FormBuilder, Validators } from "@angular/forms";
 
 @Component({
   selector: 'app-edit-coach-information',
@@ -13,7 +13,7 @@ export class EditCoachInformationComponent implements OnInit {
 
   private _coach: User;
 
-  constructor(private _coachService: CoachService, private _activatedRoute: ActivatedRoute, private _formBuilder: FormBuilder) { }
+  constructor(private _router: Router, private _coachService: CoachService, private _activatedRoute: ActivatedRoute, private _formBuilder: FormBuilder) { }
 
   private _editCoachInformationForm;
 
@@ -32,15 +32,19 @@ export class EditCoachInformationComponent implements OnInit {
     });
   }
 
-  initialiseEditProfileForm(){
+  initialiseEditProfileForm() {
     this._editCoachInformationForm = this._formBuilder.group({
       availability: [this._coach.coachProfile.availability],
       introduction: [this._coach.coachProfile.introduction]
     })
   }
 
-  editCoachInformation(){
-    this._coachService.editCoachProfileInformation(this._activatedRoute.snapshot.params.id, this._editCoachInformationForm.value);
+  editCoachInformation() {
+    this._coachService.editCoachProfileInformation(this._activatedRoute.snapshot.params.id, this._editCoachInformationForm.value).subscribe(() => this._router.navigate(['/coaches', this._coach.id]));
+  }
+
+  get editCoachInformationForm() {
+    return this._editCoachInformationForm;
   }
 
 }

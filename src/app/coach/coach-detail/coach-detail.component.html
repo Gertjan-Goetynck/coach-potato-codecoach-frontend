@@ -36,7 +36,12 @@
     <div class="col-md-12">
         <div class="card">
             <div class="card-body">
-                <h4 class="card-title">Coach Information</h4>
+                <div class="d-flex">
+                    <h4 class="card-title">Coach Information</h4>
+                    <a class="btn btn-outline-dark ml-auto rounded-circle"
+                        routerLink="/coaches/{{coach.id}}/edit/information"><i class="far fa-edit"></i></a>
+                </div>
+
                 <hr />
                 <div class="row">
                     <div class="col-12">

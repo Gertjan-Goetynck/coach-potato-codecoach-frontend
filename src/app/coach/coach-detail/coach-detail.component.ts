@@ -11,6 +11,7 @@ import { CoachService } from 'src/app/services/coach.service';
 export class CoachDetailComponent implements OnInit {
 
   private _coach: User;
+  private _isEditingEnabled: boolean;
 
   constructor(private _coachService: CoachService) { }
 
@@ -22,9 +23,16 @@ export class CoachDetailComponent implements OnInit {
     return this._coach;
   }
 
+  get isEditingEnabled(): boolean {
+    return this._isEditingEnabled;
+  }
+
   @Input() set coach(coach: User) {
     this._coach = coach;
   }
 
+  @Input() set isEditingEnabled(enabled: boolean) {
+    this._isEditingEnabled = enabled;
+  }
 
 }
