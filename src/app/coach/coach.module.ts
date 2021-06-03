@@ -13,6 +13,7 @@ import { CoachDetailViewComponent } from './coach-detail-view/coach-detail-view.
 import { CoachCoachingSessionListComponent } from './coach-coaching-session-list/coach-coaching-session-list.component';
 import { PipesModule } from "../pipes/pipes.module";
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { EditCoachInformationComponent } from './edit-coach-information/edit-coach-information.component';
 
 
 
@@ -25,6 +26,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     CoachDetailComponent,
     CoachDetailViewComponent,
     CoachCoachingSessionListComponent,
+    EditCoachInformationComponent,
   ],
   imports: [
     CommonModule,

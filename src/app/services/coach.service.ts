@@ -20,10 +20,12 @@ export class CoachService {
   }
 
   getCoachById(coachId: string): Observable<User> {
-    console.log("test");
     return this._http.get<User>(`${this._coachUrl}/${coachId}`);
   }
 
+  editCoachProfileInformation(coachId: string, information): Observable<User> {
+    return this._http.put<User>(`${this._coachUrl}/${coachId}/updateprofile`, information);
+  }
 
 
 }

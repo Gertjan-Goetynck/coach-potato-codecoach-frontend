@@ -11,6 +11,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CoachModule } from './coach/coach.module';
 import { AuthModule } from './auth/auth.module';
 import { CoachingSessionModule } from "./coach-session/coaching-session.module";
+import {ErrorPagesModule} from "./error-pages/error-pages.module";
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { CoachingSessionModule } from "./coach-session/coaching-session.module";
     AuthModule,
     NgbModule,
     CoachingSessionModule,
+    ErrorPagesModule,
     AppRoutingModule
   ],
   providers: [],
