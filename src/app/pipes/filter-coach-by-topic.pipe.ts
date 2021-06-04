@@ -7,9 +7,6 @@ import { User } from '../models/user';
 export class FilterCoachByTopicPipe implements PipeTransform {
 
   transform(coaches: User[], topicId: string): User[] {
-    // console.log(topicId);
-    // console.log(coaches);
-    // return coaches;
     if (topicId === "") {
       return coaches;
     }

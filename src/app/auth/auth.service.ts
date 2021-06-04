@@ -47,7 +47,6 @@ export class AuthService {
 
   getCurrentUserId(): string {
     if (this.isAuthenticated) {
-      console.log(localStorage.getItem("userId"));
       return localStorage.getItem("userId");
     }
     return null;

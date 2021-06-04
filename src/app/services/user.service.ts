@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/internal/Observable';
 import { User } from '../models/user';
 import { environment } from 'src/environments/environment';
@@ -23,8 +23,6 @@ export class UserService {
   getUserById(id: string): Observable<User> {
     return this._http.get<User>(`${this._userUrl}/${id}`);
   }
-
-
 
   becomeCoach(id: string): Observable<User> {
     return this._http.put<User>(`${this._userUrl}/coach/${id}`, null);

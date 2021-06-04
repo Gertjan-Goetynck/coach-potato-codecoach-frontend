@@ -27,12 +27,10 @@ export class LoginFormComponent implements OnInit {
   }
 
   onSubmit(): void {
-    console.log(this._loginUserForm);
     this._authService.loginUser(this._loginUserForm.value).subscribe(user => {
       this._authService.setLocalStorage(user);
       this._router.navigate([`/users/${user.id}`]);
     }, error => this._loginErrors = error.error.message);
-
   }
 
   get loginErrors() {
