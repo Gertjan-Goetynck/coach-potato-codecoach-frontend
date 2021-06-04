@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from "@angular/forms";
-import { UserService } from "../../services/user.service";
 import { Router } from "@angular/router";
 import { patternValidator } from 'src/app/forms-validators/pattern-validator';
-import { Output, EventEmitter } from '@angular/core';
+import { AuthService } from 'src/app/auth/auth.service';
 
 
 @Component({
@@ -16,7 +15,7 @@ export class LoginFormComponent implements OnInit {
 
   private _loginErrors: string;
 
-  constructor(private _formBuilder: FormBuilder, private _userService: UserService, private _router: Router) {
+  constructor(private _authService: AuthService, private _formBuilder: FormBuilder, private _router: Router) {
 
   }
   private _loginUserForm = this._formBuilder.group({
@@ -29,10 +28,8 @@ export class LoginFormComponent implements OnInit {
 
   onSubmit(): void {
     console.log(this._loginUserForm);
-    this._userService.loginUser(this._loginUserForm.value).subscribe(user => {
-
-      localStorage.setItem('userId', user.id);
-      localStorage.setItem('userRoles', JSON.stringify(user.roles));
+    this._authService.loginUser(this._loginUserForm.value).subscribe(user => {
+      this._authService.setLocalStorage(user);
       this._router.navigate([`/users/${user.id}`]);
     }, error => this._loginErrors = error.error.message);
 

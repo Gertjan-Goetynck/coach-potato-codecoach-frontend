@@ -15,11 +15,16 @@ export class HeaderComponent implements OnInit {
   constructor(private _authService: AuthService, private router: Router) { }
 
   ngOnInit(): void {
-    this._isLoggedIn = this._authService.isAuthenticated();
-    this._userId = this.getUserId();
+    this._authService.setLoggedIn(this._authService.isAuthenticated());
+    this._authService.isLoggedIn.subscribe((isLoggedIn) => {
+      this._isLoggedIn = isLoggedIn;
+      if (isLoggedIn) {
+        console.log("Is logged in:" + isLoggedIn);
+        console.log("User Id:" + this.getUserId());
+        this._userId = this.getUserId();
+      }
+    });
   }
-
-  //TODO: Switch sign in button to sign out when signed in
 
   get userId(): string {
     return this._userId;
@@ -35,7 +40,7 @@ export class HeaderComponent implements OnInit {
 
   signOut() {
     localStorage.clear();
-    this._isLoggedIn = false;
+    this._authService.setLoggedIn(false);
     this.router.navigate([""]);
   }
 }
