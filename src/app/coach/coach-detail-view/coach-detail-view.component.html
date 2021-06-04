@@ -1,6 +1,14 @@
 <app-user-main-nav *ngIf="isAuthenticated"></app-user-main-nav>
-<div class="mb-2"><app-coach-detail *ngIf="coach" [coach]="coach"
-                       ></app-coach-detail></div>
-<a *ngIf="!isOwnProfile" routerLink="/coaches/{{coach.id}}/requestsession"
-    class="btn btn-warning btn-outline mb-4">Request
-    Session <i class="fas fa-chevron-right"></i></a>
+<div class="mb-2">
+    <app-coach-detail *ngIf="coach" [coach]="coach"></app-coach-detail>
+</div>
+<ng-container *ngIf="coach">
+    <a *ngIf="!isOwnProfile" routerLink="/coaches/{{coach.id}}/requestsession"
+        class="btn btn-warning btn-outline mb-4">Request
+        Session <i class="fas fa-chevron-right"></i></a>
+</ng-container>
+<div class="d-flex justify-content-center" *ngIf="!coach">
+    <div class="spinner-border text-warning" role="status">
+        <span class="sr-only">Loading...</span>
+    </div>
+</div>

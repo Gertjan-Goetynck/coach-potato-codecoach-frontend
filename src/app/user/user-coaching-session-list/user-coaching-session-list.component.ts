@@ -4,6 +4,8 @@ import { AuthService } from 'src/app/auth/auth.service';
 import { CoachSession } from 'src/app/models/coach-session';
 import { CoachingSessionService } from 'src/app/services/coaching-session.service';
 
+import * as moment from "moment";
+
 @Component({
   selector: 'app-user-coaching-session-list',
   templateUrl: './user-coaching-session-list.component.html',
@@ -42,9 +44,12 @@ export class UserCoachingSessionListComponent implements OnInit {
         case 'REQUESTED':
         case 'ACCEPTED':
         case 'DECLINED': {
-          const dateSession = new Date(coachingSession.date);
-          const today = new Date();
-          if (dateSession < today) {
+          const now = moment();
+          const dateSession = moment(`${coachingSession.date} ${coachingSession.time}`);
+          console.log("now: " + now.format());
+          console.log("dateSession:" + dateSession.format());
+          console.log(dateSession.isBefore(now));
+          if (dateSession.isBefore(now)) {
             this._archivedCoachingSessions.push(coachingSession);
           } else this._upcomingCoachingSessions.push(coachingSession);
         }
