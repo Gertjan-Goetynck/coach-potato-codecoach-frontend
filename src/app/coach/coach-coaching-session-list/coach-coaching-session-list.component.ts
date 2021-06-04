@@ -1,8 +1,8 @@
-import {Component, OnInit} from '@angular/core';
-import {CoachingSessionService} from "../../services/coaching-session.service";
-import {ActivatedRoute} from "@angular/router";
-import {AuthService} from "../../auth/auth.service";
-import {CoachSession} from "../../models/coach-session";
+import { Component, OnInit } from '@angular/core';
+import { CoachingSessionService } from "../../services/coaching-session.service";
+import { ActivatedRoute } from "@angular/router";
+import { AuthService } from "../../auth/auth.service";
+import { CoachSession } from "../../models/coach-session";
 
 @Component({
   selector: 'app-coach-coaching-session-list',

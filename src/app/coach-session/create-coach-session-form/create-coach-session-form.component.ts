@@ -32,9 +32,13 @@ export class CreateCoachSessionFormComponent implements OnInit {
 
   ngOnInit(): void {
     this.getCoach();
+    this._requestSessionForm.patchValue({
+      date: this.today
+    })
   }
 
   onSubmit(): void {
+
     this._coachSessionService.organiseCoachSession({
       ...this._requestSessionForm.value,
       coacheeId: this._authService.getCurrentUserId(),
@@ -53,7 +57,12 @@ export class CreateCoachSessionFormComponent implements OnInit {
   }
 
   getCoach() {
-    this._coachService.getCoachById(this._activatedRoute.snapshot.params.id).subscribe(coach => this._coach = coach);
+    this._coachService.getCoachById(this._activatedRoute.snapshot.params.id).subscribe(coach => {
+      this._coach = coach;
+      this._requestSessionForm.patchValue({
+        topicId: this.coach.coachProfile.coachTopics[0].topic.id
+      })
+    });
   }
 
   get coach() {

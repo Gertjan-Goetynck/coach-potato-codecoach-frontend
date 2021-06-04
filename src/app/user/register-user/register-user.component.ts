@@ -47,7 +47,7 @@ export class RegisterUserComponent implements OnInit {
 
   onSubmit(): void {
     console.log(this._registerUserForm);
-    this._userService.addUser(this._registerUserForm.value).subscribe(user => this._router.navigate([`/users/${user.id}`]), error => this._formBackendErrors.email = error.error.message);
+    this._userService.addUser(this._registerUserForm.value).subscribe(user => this._router.navigate([`/login`]), error => this._formBackendErrors.email = error.error.message);
   }
 
   get registerUserForm() {
